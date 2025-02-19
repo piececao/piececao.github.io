@@ -19,19 +19,29 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="树莓派pico开发环境搭建">
-<meta property="og:url" content="http://example.com/2025/02/11/%E6%A0%91%E8%8E%93%E6%B4%BEpico%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
+    <meta name="description" content="PICO上手树莓派pico的板子很小一片，和STM32的Blue Pill板子差不多的大小。板子上是有USB接口的，可以通过USB烧录uf2格式的文件。 PICO使用RP2040作为主控制器，具有：  双核 Arm Cortex-M0 + @ 133MHz  内置 264KB SRAM 和 2MB 的板载闪存  专用 QSPI 总线  DMA 控制器  30 个 GPIO 引脚，其中 4 个可用作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派pico开发环境搭建(Pico SDK)">
+<meta property="og:url" content="https://piececao.github.io/2025/02/11/%E6%A0%91%E8%8E%93%E6%B4%BEpico%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="破旧寺院">
+<meta property="og:description" content="PICO上手树莓派pico的板子很小一片，和STM32的Blue Pill板子差不多的大小。板子上是有USB接口的，可以通过USB烧录uf2格式的文件。 PICO使用RP2040作为主控制器，具有：  双核 Arm Cortex-M0 + @ 133MHz  内置 264KB SRAM 和 2MB 的板载闪存  专用 QSPI 总线  DMA 控制器  30 个 GPIO 引脚，其中 4 个可用作">
 <meta property="og:locale">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-02-19-16-13-37-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-02-19-16-41-46-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-02-19-16-53-34-image.png">
 <meta property="article:published_time" content="2025-02-11T14:16:21.000Z">
-<meta property="article:modified_time" content="2025-02-11T14:16:21.700Z">
+<meta property="article:modified_time" content="2025-02-19T09:06:21.158Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="rp2040">
+<meta property="article:tag" content="环境搭建">
+<meta property="article:tag" content="Pico SDK">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://piececao.github.io/assets/2025-02-19-16-13-37-image.png">
   
   
   
-  <title>树莓派pico开发环境搭建 | 破旧寺院</title>
+  <title>树莓派pico开发环境搭建(Pico SDK) | 破旧寺院</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -69,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+    var CONFIG = {"hostname":"piececao.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -201,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="树莓派pico开发环境搭建"></span>
+            <span id="subtitle" data-typed-text="树莓派pico开发环境搭建(Pico SDK)"></span>
           
         </div>
 
@@ -224,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 wörter
+          243 wörter
         
       </span>
     
@@ -235,7 +245,7 @@
         
         
         
-          1 minuten
+          3 minuten
         
       </span>
     
@@ -272,12 +282,41 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">树莓派pico开发环境搭建</h1>
+            <h1 id="seo-header">树莓派pico开发环境搭建(Pico SDK)</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h1 id="PICO上手"><a href="#PICO上手" class="headerlink" title="PICO上手"></a>PICO上手</h1><p>树莓派pico的板子很小一片，和STM32的Blue Pill板子差不多的大小。板子上是有USB接口的，可以通过USB烧录uf2格式的文件。</p>
+<p>PICO使用RP2040作为主控制器，具有：</p>
+<ul>
+<li><p>双核 Arm Cortex-M0 + @ 133MHz</p>
+</li>
+<li><p>内置 264KB SRAM 和 2MB 的板载闪存</p>
+</li>
+<li><p>专用 QSPI 总线</p>
+</li>
+<li><p>DMA 控制器</p>
+</li>
+<li><p>30 个 GPIO 引脚，其中 4 个可用作模拟输入</p>
+</li>
+<li><p>2 个 UART、2 个 SPI 控制器和 2 个 I2C 控制器</p>
+</li>
+<li><p>16 个 PWM 通道</p>
+</li>
+<li><p>USB 1.1 主机和设备支持</p>
+</li>
+<li><p>8 个树莓派可编程 I&#x2F;O（PIO）状态机，用于自定义外围设备支持</p>
+</li>
+<li><p>支持 UF2 的 USB 大容量存储启动模式，用于拖放式编程</p>
+</li>
+</ul>
+<p><img src="/assets/2025-02-19-16-13-37-image.png" srcset="/img/loading.gif" lazyload alt="树莓派Pico引脚图"></p>
+<h1 id="烧录"><a href="#烧录" class="headerlink" title="烧录"></a>烧录</h1><p>下载程序文件<a target="_blank" rel="noopener" href="https://datasheets.raspberrypi.com/soft/blink.uf2">blink.uf2</a>，按住pico板子上的“BOOTSEL”按键，然后用USB数据线把pico连接到电脑上，在电脑上就可以看到连接了一个USB设备“RPI-RP2”</p>
+<p><img src="/assets/2025-02-19-16-41-46-image.png" srcset="/img/loading.gif" lazyload></p>
+<p>把blink.uf2拖进去就可以烧录了。烧录完成USB会自动断开连接，板子开始执行程序文件。</p>
+<p><img src="/assets/2025-02-19-16-53-34-image.png" srcset="/img/loading.gif" lazyload></p>
+
                 
               </div>
             
@@ -285,6 +324,19 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="print-no-link">#嵌入式</a>
+      
+        <a href="/tags/rp2040/" class="print-no-link">#rp2040</a>
+      
+        <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="print-no-link">#环境搭建</a>
+      
+        <a href="/tags/Pico-SDK/" class="print-no-link">#Pico SDK</a>
+      
+    </div>
   
 </div>
 
@@ -294,8 +346,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>树莓派pico开发环境搭建</div>
-      <div>http://example.com/2025/02/11/树莓派pico开发环境搭建/</div>
+      <div>树莓派pico开发环境搭建(Pico SDK)</div>
+      <div>https://piececao.github.io/2025/02/11/树莓派pico开发环境搭建/</div>
     </div>
     <div class="license-meta">
       

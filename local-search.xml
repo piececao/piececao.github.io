@@ -4,13 +4,25 @@
   
   
   <entry>
-    <title>树莓派pico开发环境搭建</title>
+    <title>树莓派pico开发环境搭建(Pico SDK)</title>
     <link href="/2025/02/11/%E6%A0%91%E8%8E%93%E6%B4%BEpico%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     <url>/2025/02/11/%E6%A0%91%E8%8E%93%E6%B4%BEpico%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="PICO上手"><a href="#PICO上手" class="headerlink" title="PICO上手"></a>PICO上手</h1><p>树莓派pico的板子很小一片，和STM32的Blue Pill板子差不多的大小。板子上是有USB接口的，可以通过USB烧录uf2格式的文件。</p><p>PICO使用RP2040作为主控制器，具有：</p><ul><li><p>双核 Arm Cortex-M0 + @ 133MHz</p></li><li><p>内置 264KB SRAM 和 2MB 的板载闪存</p></li><li><p>专用 QSPI 总线</p></li><li><p>DMA 控制器</p></li><li><p>30 个 GPIO 引脚，其中 4 个可用作模拟输入</p></li><li><p>2 个 UART、2 个 SPI 控制器和 2 个 I2C 控制器</p></li><li><p>16 个 PWM 通道</p></li><li><p>USB 1.1 主机和设备支持</p></li><li><p>8 个树莓派可编程 I&#x2F;O（PIO）状态机，用于自定义外围设备支持</p></li><li><p>支持 UF2 的 USB 大容量存储启动模式，用于拖放式编程</p></li></ul><p><img src="/assets/2025-02-19-16-13-37-image.png" alt="树莓派Pico引脚图"></p><h1 id="烧录"><a href="#烧录" class="headerlink" title="烧录"></a>烧录</h1><p>下载程序文件<a href="https://datasheets.raspberrypi.com/soft/blink.uf2">blink.uf2</a>，按住pico板子上的“BOOTSEL”按键，然后用USB数据线把pico连接到电脑上，在电脑上就可以看到连接了一个USB设备“RPI-RP2”</p><p><img src="/assets/2025-02-19-16-41-46-image.png"></p><p>把blink.uf2拖进去就可以烧录了。烧录完成USB会自动断开连接，板子开始执行程序文件。</p><p><img src="/assets/2025-02-19-16-53-34-image.png"></p>]]></content>
     
     
+    
+    <tags>
+      
+      <tag>嵌入式</tag>
+      
+      <tag>rp2040</tag>
+      
+      <tag>环境搭建</tag>
+      
+      <tag>Pico SDK</tag>
+      
+    </tags>
     
   </entry>
   
