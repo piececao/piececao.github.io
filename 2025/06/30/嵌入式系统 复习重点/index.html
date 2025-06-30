@@ -1,0 +1,1008 @@
+
+
+<!DOCTYPE html>
+<html lang="cn" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/favicon.webp">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ff5975">
+  <meta name="author" content="Piececao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="嵌入式系统简介嵌入式系统的概念，定义嵌入式系统是设计完成复杂功能的硬件和软件集合体，并使其紧密耦合在一起的计算机系统(PPT) 定义：以应用为中心、以计算机技术为基础，软件硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗严格要求的专用计算机系统。(PPT) 嵌入式系统的特点   特点名称 说明与举例    专用性强 仅为某种设备或功能定制设计。如微波炉的嵌入式控制系统不能用于洗衣机。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="嵌入式系统复习重点">
+<meta property="og:url" content="https://piececao.github.io/2025/06/30/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%20%E5%A4%8D%E4%B9%A0%E9%87%8D%E7%82%B9/index.html">
+<meta property="og:site_name" content="德狗仪器">
+<meta property="og:description" content="嵌入式系统简介嵌入式系统的概念，定义嵌入式系统是设计完成复杂功能的硬件和软件集合体，并使其紧密耦合在一起的计算机系统(PPT) 定义：以应用为中心、以计算机技术为基础，软件硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗严格要求的专用计算机系统。(PPT) 嵌入式系统的特点   特点名称 说明与举例    专用性强 仅为某种设备或功能定制设计。如微波炉的嵌入式控制系统不能用于洗衣机。">
+<meta property="og:locale">
+<meta property="og:image" content="https://piececao.github.io/assets/img20250630215950.png">
+<meta property="article:published_time" content="2025-06-30T14:55:21.000Z">
+<meta property="article:modified_time" content="2025-06-30T14:55:49.369Z">
+<meta property="article:author" content="Piececao">
+<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="stm32">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://piececao.github.io/assets/img20250630215950.png">
+  
+  
+  
+  <title>嵌入式系统复习重点 | 德狗仪器</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"piececao.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":["home"]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>德狗仪器</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Hejmpaĝo</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Arkivoj</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Kategorio</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Etikedoj</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>Pri</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/74958858_p0.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.45)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">嵌入式系统复习重点</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-06-30 22:55" pubdate>
+          June 30, 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.7k vortoj
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          23 minutoj
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">嵌入式系统复习重点</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="嵌入式系统简介"><a href="#嵌入式系统简介" class="headerlink" title="嵌入式系统简介"></a>嵌入式系统简介</h1><h2 id="嵌入式系统的概念，定义"><a href="#嵌入式系统的概念，定义" class="headerlink" title="嵌入式系统的概念，定义"></a>嵌入式系统的概念，定义</h2><p>嵌入式系统是设计完成复杂功能的硬件和软件集合体，并使其紧密耦合在一起的计算机系统(PPT)</p>
+<p>定义：以应用为中心、以计算机技术为基础，软件硬件可裁剪，适应应用系统对功能、可靠性、成本、体积、功耗严格要求的专用计算机系统。(PPT)</p>
+<h2 id="嵌入式系统的特点"><a href="#嵌入式系统的特点" class="headerlink" title="嵌入式系统的特点"></a>嵌入式系统的特点</h2><table>
+<thead>
+<tr>
+<th>特点名称</th>
+<th>说明与举例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>专用性强</td>
+<td>仅为某种设备或功能定制设计。如微波炉的嵌入式控制系统不能用于洗衣机。</td>
+</tr>
+<tr>
+<td>可裁剪性</td>
+<td>硬件和软件可根据需求进行裁剪。例如：STM32F1 系列主频72MHz，最小系统OS占用仅8KB。</td>
+</tr>
+<tr>
+<td>实时性好</td>
+<td>系统需在严格时间限制内作出响应。例如ATM机插卡时需立刻读取卡信息。</td>
+</tr>
+<tr>
+<td>可靠性高</td>
+<td>长期、连续、稳定运行，适应恶劣环境，并具备机制如看门狗、内存保护、重启机制等。</td>
+</tr>
+<tr>
+<td>生命周期长</td>
+<td>生命周期与产品一致，通常经历：导入期 → 成长期 → 成熟期 → 衰退期。</td>
+</tr>
+<tr>
+<td>不易被垄断</td>
+<td>相较通用计算机市场（被Intel&#x2F;Microsoft主导），嵌入式领域厂商多样、竞争激烈，技术生态丰富。</td>
+</tr>
+</tbody></table>
+<h2 id="嵌入式系统和通用的计算机系统的区别；"><a href="#嵌入式系统和通用的计算机系统的区别；" class="headerlink" title="嵌入式系统和通用的计算机系统的区别；"></a>嵌入式系统和通用的计算机系统的区别；</h2><table>
+<thead>
+<tr>
+<th>对比维度</th>
+<th>嵌入式系统</th>
+<th>通用计算机系统</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>目标用途</td>
+<td>面向<strong>特定功能</strong></td>
+<td>面向<strong>多用途、通用应用</strong></td>
+</tr>
+<tr>
+<td>资源配置</td>
+<td>有限，按需裁剪</td>
+<td>资源丰富（CPU、RAM等）</td>
+</tr>
+<tr>
+<td>操作系统</td>
+<td>RTOS或无OS</td>
+<td>通用操作系统（Windows、Linux）</td>
+</tr>
+<tr>
+<td>实时性</td>
+<td><strong>强实时性</strong>（硬实时）</td>
+<td>通常不强调或软实时</td>
+</tr>
+<tr>
+<td>用户交互</td>
+<td>少或无用户交互</td>
+<td>鼠标、键盘、图形界面丰富</td>
+</tr>
+<tr>
+<td>软件升级</td>
+<td>固定或通过设备升级</td>
+<td>用户可自主频繁更换</td>
+</tr>
+</tbody></table>
+<h2 id="嵌入式操作系统的结构，包括哪几层？"><a href="#嵌入式操作系统的结构，包括哪几层？" class="headerlink" title="嵌入式操作系统的结构，包括哪几层？"></a>嵌入式操作系统的结构，包括哪几层？</h2><p>三层结构</p>
+<p><img src="/assets/img20250630215950.png" srcset="/img/loading.gif" lazyload alt="图片"></p>
+<h1 id="STM32芯片简介"><a href="#STM32芯片简介" class="headerlink" title="STM32芯片简介"></a>STM32芯片简介</h1><h2 id="STM32嵌入式系统的时钟主要包括哪4种？"><a href="#STM32嵌入式系统的时钟主要包括哪4种？" class="headerlink" title="STM32嵌入式系统的时钟主要包括哪4种？"></a>STM32嵌入式系统的时钟主要包括哪4种？</h2><ol>
+<li><strong>HSE（High-Speed External）</strong>：外部高速晶振（常见8MHz石英晶体）。</li>
+<li><strong>HSI（High-Speed Internal）</strong>：内部高速RC振荡器（STM32F1中通常为8MHz）。</li>
+<li><strong>LSE（Low-Speed External）</strong>：外部低速晶振（32.768kHz，用于RTC）。</li>
+<li><strong>LSI（Low-Speed Internal）</strong>：内部低速RC振荡器（用于低功耗和RTC等）。</li>
+</ol>
+<h2 id="STM32的时钟树（APB1和APB2的最大频率、挂载的外设、串口）"><a href="#STM32的时钟树（APB1和APB2的最大频率、挂载的外设、串口）" class="headerlink" title="STM32的时钟树（APB1和APB2的最大频率、挂载的外设、串口）"></a>STM32的时钟树（APB1和APB2的最大频率、挂载的外设、串口）</h2><ul>
+<li><strong>AHB（Advanced High-performance Bus）</strong>：主总线，连接CPU、DMA、SRAM等。</li>
+<li><strong>APB1（低速外设总线）</strong><ul>
+<li><strong>最大频率</strong>：36 MHz（对于STM32F103系列）</li>
+<li><strong>常见挂载外设</strong>：USART2&#x2F;3、I2C1&#x2F;2、SPI2、CAN等</li>
+</ul>
+</li>
+<li><strong>APB2（高速外设总线）</strong><ul>
+<li><strong>最大频率</strong>：72 MHz</li>
+<li><strong>常见挂载外设</strong>：USART1、SPI1、ADC等</li>
+</ul>
+</li>
+</ul>
+<h2 id="什么是波特率，如何根据波特率计算分频系数"><a href="#什么是波特率，如何根据波特率计算分频系数" class="headerlink" title="什么是波特率，如何根据波特率计算分频系数"></a>什么是波特率，如何根据波特率计算分频系数</h2><ul>
+<li><strong>波特率（Baud Rate）</strong>：表示单位时间内传输的符号数，1 Baud &#x3D; 1 bit&#x2F;s（对于二进制信号）。</li>
+<li><strong>计算公式（以USART为例）</strong>：<br>  $USART_{DIV}&#x3D;\frac{f_{CK}}{16 \times 波特率}$<ul>
+<li><code>f_CK</code>：USART模块输入的时钟频率（如APB1或APB2时钟）</li>
+<li>得出的 <code>USART_DIV</code> 由整数部分（用于设置分频器）和小数部分（设置采样精度）决定。</li>
+</ul>
+</li>
+</ul>
+<h2 id="嵌入式系统正常工作的最小系统组成电路单元主要包括"><a href="#嵌入式系统正常工作的最小系统组成电路单元主要包括" class="headerlink" title="嵌入式系统正常工作的最小系统组成电路单元主要包括"></a>嵌入式系统正常工作的最小系统组成电路单元主要包括</h2><ul>
+<li><strong>嵌入式芯片（如STM32）</strong></li>
+<li><strong>电源电路</strong>（为MCU提供稳定的电压，如3.3V）</li>
+<li><strong>晶振电路</strong>（时钟源）</li>
+<li><strong>复位电路</strong>（上电或异常复位）</li>
+<li><strong>下载调试电路</strong>（如SWD或JTAG接口）</li>
+<li><strong>BOOT启动电路</strong>（通过BOOT0&#x2F;BOOT1引脚选择启动模式：主Flash、系统Bootloader、SRAM等）</li>
+</ul>
+<h2 id="指令集、架构、处理器、内核，芯片之间的关系，cortex内核的3个架构版本（ARMv7-M-A-R），分别用于哪三个场景？"><a href="#指令集、架构、处理器、内核，芯片之间的关系，cortex内核的3个架构版本（ARMv7-M-A-R），分别用于哪三个场景？" class="headerlink" title="指令集、架构、处理器、内核，芯片之间的关系，cortex内核的3个架构版本（ARMv7-M,A,R），分别用于哪三个场景？"></a>指令集、架构、处理器、内核，芯片之间的关系，cortex内核的3个架构版本（ARMv7-M,A,R），分别用于哪三个场景？</h2><table>
+<thead>
+<tr>
+<th>架构</th>
+<th>内核示例</th>
+<th>主要用于</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ARMv7-A</td>
+<td>Cortex-A7&#x2F;A8&#x2F;A9</td>
+<td>应用处理器，如手机、Linux系统等</td>
+</tr>
+<tr>
+<td>ARMv7-R</td>
+<td>Cortex-R4&#x2F;R5</td>
+<td>实时处理系统，如汽车、工业控制</td>
+</tr>
+<tr>
+<td>ARMv7-M</td>
+<td>Cortex-M0&#x2F;M3hang&#x2F;M4&#x2F;M7</td>
+<td>微控制器，低功耗嵌入式设备（如STM32）</td>
+</tr>
+</tbody></table>
+<h2 id="哈佛结构-vs-冯诺依曼结构"><a href="#哈佛结构-vs-冯诺依曼结构" class="headerlink" title="哈佛结构 vs 冯诺依曼结构"></a>哈佛结构 vs 冯诺依曼结构</h2><table>
+<thead>
+<tr>
+<th>特点</th>
+<th>哈佛结构</th>
+<th>冯诺依曼结构</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>程序&#x2F;数据存储</td>
+<td>分开存储</td>
+<td>共用同一存储器</td>
+</tr>
+<tr>
+<td>指令和数据总线</td>
+<td>各自独立</td>
+<td>共用总线</td>
+</tr>
+<tr>
+<td>并行访问能力</td>
+<td>支持指令和数据并行访问</td>
+<td>访问瓶颈（冯诺依曼瓶颈）</td>
+</tr>
+<tr>
+<td>典型应用</td>
+<td>DSP、Cortex-M系列</td>
+<td>传统PC、部分ARM A系列</td>
+</tr>
+</tbody></table>
+<h1 id="HAL库"><a href="#HAL库" class="headerlink" title="HAL库"></a>HAL库</h1><h2 id="STM32提供了哪些库函数？"><a href="#STM32提供了哪些库函数？" class="headerlink" title="STM32提供了哪些库函数？"></a>STM32提供了哪些库函数？</h2><table>
+<thead>
+<tr>
+<th>库类型</th>
+<th>全称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>LL库</strong></td>
+<td>Low Layer</td>
+<td>接近寄存器级，执行效率高，功能轻量，需开发者了解硬件底层。</td>
+</tr>
+<tr>
+<td><strong>HAL库</strong></td>
+<td>Hardware Abstraction Layer</td>
+<td>抽象硬件细节，便于跨平台、模块化编程，推荐新手和中大型项目使用。</td>
+</tr>
+<tr>
+<td><strong>CMSIS库</strong></td>
+<td>Cortex Microcontroller Software Interface Standard</td>
+<td>ARM 官方定义的内核级支持库，提供中断向量表、Systick、NVIC等基础接口。</td>
+</tr>
+</tbody></table>
+<h2 id="HAL库中各类-h以及-s文件的描述，作用？"><a href="#HAL库中各类-h以及-s文件的描述，作用？" class="headerlink" title="HAL库中各类.h以及.s文件的描述，作用？"></a>HAL库中各类.h以及.s文件的描述，作用？</h2><table>
+<thead>
+<tr>
+<th>文件名</th>
+<th>文件类型</th>
+<th>作用与说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong><code>stm32f1xx.h</code></strong></td>
+<td>头文件</td>
+<td>主芯片系列头文件，统一包含对应 STM32F1 系列（如F103）的定义。引入芯片型号对应的具体头文件如 <code>stm32f103xe.h</code>。</td>
+</tr>
+<tr>
+<td><strong><code>startup_stm32f103xe.s</code></strong></td>
+<td>汇编启动文件</td>
+<td>启动文件，完成以下任务：1. 设置中断向量表2. 初始化堆栈、堆区3. 跳转到 <code>main()</code>4. 异常&#x2F;中断默认处理入口</td>
+</tr>
+<tr>
+<td><strong><code>system_stm32f1xx.c/h</code></strong></td>
+<td>源文件 &#x2F; 头文件</td>
+<td>系统时钟配置相关代码。提供 <code>SystemInit()</code> 和 <code>SystemCoreClockUpdate()</code> 等函数，用于配置 HSE&#x2F;PLL 等系统主频。</td>
+</tr>
+<tr>
+<td><strong><code>stm32f103xe.h</code></strong></td>
+<td>头文件</td>
+<td>定义具体 STM32F103XE 芯片的所有寄存器地址、位域、结构体、时钟&#x2F;外设映射。</td>
+</tr>
+<tr>
+<td><strong><code>stm32f1xx_hal_conf.h</code></strong></td>
+<td>头文件</td>
+<td>HAL库配置文件，启用&#x2F;禁用某些 HAL 模块（如 ADC、USART、TIM），控制编译裁剪。</td>
+</tr>
+<tr>
+<td>等等</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td><strong><code>stm32f1xx_hal_xxx.c/h</code></strong></td>
+<td>源文件 &#x2F; 头文件</td>
+<td>HAL驱动模块，具体外设功能的库代码。例如：- <code>stm32f1xx_hal_gpio.c/h</code> 控制GPIO- <code>stm32f1xx_hal_usart.c/h</code> 控制串口- <code>stm32f1xx_hal_adc.c/h</code> 控制ADC</td>
+</tr>
+<tr>
+<td><strong><code>core_cm3.h</code></strong></td>
+<td>头文件</td>
+<td>ARM Cortex-M3 内核寄存器定义，如 SCB、NVIC、SysTick 等，来自 CMSIS。</td>
+</tr>
+<tr>
+<td><strong><code>main.c</code></strong></td>
+<td>用户代码入口</td>
+<td>用户主程序入口，常见结构：<code>int main(void) &#123;...&#125;</code></td>
+</tr>
+<tr>
+<td><strong><code>stm32f1xx_it.c/h</code></strong></td>
+<td>中断处理</td>
+<td>所有中断服务函数，如 <code>SysTick_Handler()</code>、<code>USARTx_IRQHandler()</code> 等定义和实现。</td>
+</tr>
+</tbody></table>
+<h1 id="GPIO"><a href="#GPIO" class="headerlink" title="GPIO"></a>GPIO</h1><h2 id="STM32包含哪几类引脚"><a href="#STM32包含哪几类引脚" class="headerlink" title="STM32包含哪几类引脚"></a>STM32包含哪几类引脚</h2><table>
+<thead>
+<tr>
+<th>引脚类型</th>
+<th>常见引脚名称&#x2F;编号</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>电源引脚</strong></td>
+<td><code>VDD</code>、<code>VSS</code>、<code>VDDA</code>、<code>VSSA</code></td>
+<td>为芯片提供工作电压（一般为 3.3V）与模拟&#x2F;数字地。<code>VDDA</code>&#x2F;<code>VSSA</code> 用于 ADC、DAC 等模拟模块供电。</td>
+</tr>
+<tr>
+<td><strong>晶振引脚</strong></td>
+<td><code>HSE_IN</code>、<code>HSE_OUT</code>、<code>LSE_IN</code>、<code>LSE_OUT</code></td>
+<td>外部时钟输入输出引脚，HSE用于高速晶振（如8MHz），LSE用于低速晶振（如32.768kHz，用于RTC）。</td>
+</tr>
+<tr>
+<td><strong>复位引脚</strong></td>
+<td><code>NRST</code></td>
+<td>外部复位引脚，低电平有效，复位芯片。</td>
+</tr>
+<tr>
+<td><strong>下载引脚</strong></td>
+<td><code>SWDIO</code>、<code>SWCLK</code>（或 JTAG接口：<code>TMS</code>, <code>TCK</code>, <code>TDI</code>, <code>TDO</code>, <code>TRST</code>）</td>
+<td>下载&#x2F;调试接口引脚，使用 SWD&#x2F;JTAG 连接调试器如 ST-Link。</td>
+</tr>
+<tr>
+<td><strong>BOOT引脚</strong></td>
+<td><code>BOOT0</code>、（部分型号有 <code>BOOT1</code>）</td>
+<td>启动模式选择引脚。<code>BOOT0=0</code>：从主Flash启动<code>BOOT0=1</code>：从系统内存（ISP）或SRAM启动</td>
+</tr>
+<tr>
+<td><strong>GPIO引脚</strong></td>
+<td><code>PAx</code>, <code>PBx</code>, <code>PCx</code> 等</td>
+<td>通用输入输出引脚，可配置为输入、输出、外设复用（串口、PWM、I2C等）或模拟输入。</td>
+</tr>
+</tbody></table>
+<h2 id="什么是GPIO？它的作用是什么？"><a href="#什么是GPIO？它的作用是什么？" class="headerlink" title="什么是GPIO？它的作用是什么？"></a>什么是GPIO？它的作用是什么？</h2><p><strong>GPIO（General-Purpose Input&#x2F;Output）</strong> 指的是“通用输入输出引脚”。<br><strong>作用</strong>：负责采集外部器件的信息或者控制外部器件工作，即输入输出</p>
+<h2 id="几种工作模式？复用的有哪几种？"><a href="#几种工作模式？复用的有哪几种？" class="headerlink" title="几种工作模式？复用的有哪几种？"></a>几种工作模式？复用的有哪几种？</h2><table>
+<thead>
+<tr>
+<th>GPIO八种模式</th>
+<th>特点及应用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>输入浮空</td>
+<td>输入用，完全浮空，状态不定</td>
+</tr>
+<tr>
+<td>输入上拉</td>
+<td>输入用，用内部上拉，默认是高电平</td>
+</tr>
+<tr>
+<td>输入下拉</td>
+<td>输入用，用内部下拉，默认是低电平</td>
+</tr>
+<tr>
+<td>模拟功能</td>
+<td>ADC、DAC</td>
+</tr>
+<tr>
+<td>开漏输出</td>
+<td>软件IIC的SDA、SCL等</td>
+</tr>
+<tr>
+<td>推挽输出</td>
+<td>驱动能力强，25mA（max），通用输出</td>
+</tr>
+<tr>
+<td>开漏式复用功能（复用）</td>
+<td>片上外设功能（硬件IIC 的SDA、SCL引脚等）</td>
+</tr>
+<tr>
+<td>推挽式复用功能（复用）</td>
+<td>片上外设功能（SPI 的SCK、MISO、MOSI引脚等）</td>
+</tr>
+</tbody></table>
+<h2 id="STM32嵌入式系统的GPIO电气特性，输出电流一般多大？输入电压（两种）"><a href="#STM32嵌入式系统的GPIO电气特性，输出电流一般多大？输入电压（两种）" class="headerlink" title="STM32嵌入式系统的GPIO电气特性，输出电流一般多大？输入电压（两种）"></a>STM32嵌入式系统的GPIO电气特性，输出电流一般多大？输入电压（两种）</h2><p>高电平范围： -0.3V ≤ $V_{IL}$ ≤ 1.164V<br>低电平范围：1.833V ≤ $V_{IH}$ ≤ 3.6V<br><strong>输出电流</strong>：单个IO不大于25mA</p>
+<h2 id="编程题，通过GPIO输入控制LED亮灭，或者通过按键输入，再控制LED亮灭。搞清楚使用的GPIO模式，初始化代码的编写。"><a href="#编程题，通过GPIO输入控制LED亮灭，或者通过按键输入，再控制LED亮灭。搞清楚使用的GPIO模式，初始化代码的编写。" class="headerlink" title="编程题，通过GPIO输入控制LED亮灭，或者通过按键输入，再控制LED亮灭。搞清楚使用的GPIO模式，初始化代码的编写。"></a>编程题，通过GPIO输入控制LED亮灭，或者通过按键输入，再控制LED亮灭。搞清楚使用的GPIO模式，初始化代码的编写。</h2><p>需要使用<code>HAL_GPIO_ReadPin</code>函数：使用例<code>HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_9)</code><br>用例：<code>HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET)</code></p>
+<p>初始化代码例：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs C"><span class="hljs-type">static</span> <span class="hljs-type">void</span> <span class="hljs-title function_">MX_GPIO_Init</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span><br>&#123;<br>  GPIO_InitTypeDef GPIO_InitStruct = &#123;<span class="hljs-number">0</span>&#125;;<br>  <span class="hljs-comment">/* GPIO Ports Clock Enable */</span><br>  __HAL_RCC_GPIOD_CLK_ENABLE();<br>  __HAL_RCC_GPIOA_CLK_ENABLE();<br>  <span class="hljs-comment">/*Configure GPIO pin Output Level */</span><br>  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_RESET);<br>  <span class="hljs-comment">/*Configure GPIO pin : PA8 */</span><br>  GPIO_InitStruct.Pin = GPIO_PIN_8;<br>  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;<br>  GPIO_InitStruct.Pull = GPIO_NOPULL;<br>  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;<br>  HAL_GPIO_Init(GPIOA, &amp;GPIO_InitStruct);<br>  <span class="hljs-comment">/*Configure GPIO pin : PA9 */</span><br>  GPIO_InitStruct.Pin = GPIO_PIN_9;<br>  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;<br>  GPIO_InitStruct.Pull = GPIO_NOPULL;         <span class="hljs-comment">// &lt;----- This Option</span><br>  HAL_GPIO_Init(GPIOA, &amp;GPIO_InitStruct);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h1 id="中断"><a href="#中断" class="headerlink" title="中断"></a>中断</h1><h2 id="STM32微控制器的中断优先级规则"><a href="#STM32微控制器的中断优先级规则" class="headerlink" title="STM32微控制器的中断优先级规则"></a>STM32微控制器的中断优先级规则</h2><p>（高响应优先级可以打断正在执行的低响应优先级中断；响应中断，抢占中断的关系）</p>
+<h2 id="NVIC是什么，EXTI是什么？"><a href="#NVIC是什么，EXTI是什么？" class="headerlink" title="NVIC是什么，EXTI是什么？"></a>NVIC是什么，EXTI是什么？</h2><table>
+<thead>
+<tr>
+<th>缩写</th>
+<th>全称</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>NVIC</strong></td>
+<td>Nested Vectored Interrupt Controller</td>
+<td>嵌套向量中断控制器，管理中断优先级和使能，支持中断嵌套。</td>
+</tr>
+<tr>
+<td><strong>EXTI</strong></td>
+<td>External Interrupt&#x2F;Event Controller</td>
+<td>外部中断&#x2F;事件控制器，将 GPIO 引脚事件映射为中断线，最多支持 20 条外部中断线。</td>
+</tr>
+</tbody></table>
+<h2 id="中断优先级包括哪三种？"><a href="#中断优先级包括哪三种？" class="headerlink" title="中断优先级包括哪三种？"></a>中断优先级包括哪三种？</h2><ol>
+<li>抢占优先级(pre)：高抢占优先级可以打断正在执行的低抢占优先级中断</li>
+<li>响应优先级(sub)：当抢占优先级相同时，响应优先级高的先执行，但是不能互相打断</li>
+<li>抢占和响应都相同的情况下，自然优先级越高的，先执行</li>
+<li>自然优先级：中断向量表的优先级</li>
+<li>数值越小，表示优先级越高</li>
+</ol>
+<h1 id="串口"><a href="#串口" class="headerlink" title="串口"></a>串口</h1><h2 id="USART，-UART-，-SPI，-IIC-之间的共同点和区别，各自有哪些信号线？"><a href="#USART，-UART-，-SPI，-IIC-之间的共同点和区别，各自有哪些信号线？" class="headerlink" title="USART， UART ， SPI， IIC 之间的共同点和区别，各自有哪些信号线？"></a>USART， UART ， SPI， IIC 之间的共同点和区别，各自有哪些信号线？</h2><h2 id="SPI在物理层体现为4条信号线，分别是哪些？"><a href="#SPI在物理层体现为4条信号线，分别是哪些？" class="headerlink" title="SPI在物理层体现为4条信号线，分别是哪些？"></a>SPI在物理层体现为4条信号线，分别是哪些？</h2><table>
+<thead>
+<tr>
+<th>信号线名称</th>
+<th>全称</th>
+<th>方向（主设备视角）</th>
+<th>功能说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>SCLK</strong></td>
+<td>Serial Clock</td>
+<td>输出</td>
+<td>主机产生的时钟信号，驱动数据传输。</td>
+</tr>
+<tr>
+<td><strong>MOSI</strong></td>
+<td>Master Out Slave In</td>
+<td>输出</td>
+<td>主机发送数据到从机。</td>
+</tr>
+<tr>
+<td><strong>MISO</strong></td>
+<td>Master In Slave Out</td>
+<td>输入</td>
+<td>从机发送数据到主机。</td>
+</tr>
+<tr>
+<td><strong>NSS&#x2F;CS</strong></td>
+<td>Chip Select (Slave Select)</td>
+<td>输出</td>
+<td>主机选择从机，低电平有效。多个从设备时，每个从机一般独立连接一条 CS 线。</td>
+</tr>
+</tbody></table>
+<h2 id="IIC总线在传输数据的过程中一共有三种类型信号，分别为哪些？"><a href="#IIC总线在传输数据的过程中一共有三种类型信号，分别为哪些？" class="headerlink" title="IIC总线在传输数据的过程中一共有三种类型信号，分别为哪些？"></a>IIC总线在传输数据的过程中一共有三种类型信号，分别为哪些？</h2><p>起始信号，终止信号，应答信号(ACK)</p>
+<h2 id="IIC总线时钟线空闲为什么电平？数据线为什么电平？分别设置为哪种输出模式？"><a href="#IIC总线时钟线空闲为什么电平？数据线为什么电平？分别设置为哪种输出模式？" class="headerlink" title="IIC总线时钟线空闲为什么电平？数据线为什么电平？分别设置为哪种输出模式？"></a>IIC总线时钟线空闲为什么电平？数据线为什么电平？分别设置为哪种输出模式？</h2><p>空闲时都为高电平，其涉及的GPIO均设置为复用开漏模式</p>
+<h2 id="什么是EEPROM-存储器-它的特点是什么？"><a href="#什么是EEPROM-存储器-它的特点是什么？" class="headerlink" title="什么是EEPROM 存储器?它的特点是什么？"></a>什么是EEPROM 存储器?它的特点是什么？</h2><h2 id="AT24C02存储器的存储空间大小和访问方式分别是什么？读写的特点什么样？"><a href="#AT24C02存储器的存储空间大小和访问方式分别是什么？读写的特点什么样？" class="headerlink" title="AT24C02存储器的存储空间大小和访问方式分别是什么？读写的特点什么样？"></a>AT24C02存储器的存储空间大小和访问方式分别是什么？读写的特点什么样？</h2><h2 id="单工通信、半双工通信以及全双工通信之间的区别？同步通信与异步通信之间的区别"><a href="#单工通信、半双工通信以及全双工通信之间的区别？同步通信与异步通信之间的区别" class="headerlink" title="单工通信、半双工通信以及全双工通信之间的区别？同步通信与异步通信之间的区别"></a>单工通信、半双工通信以及全双工通信之间的区别？同步通信与异步通信之间的区别</h2><h2 id="使用USART1串口进行通信，已知波特率，如何设置分频系数？"><a href="#使用USART1串口进行通信，已知波特率，如何设置分频系数？" class="headerlink" title="使用USART1串口进行通信，已知波特率，如何设置分频系数？"></a>使用USART1串口进行通信，已知波特率，如何设置分频系数？</h2>
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="print-no-link">#嵌入式</a>
+      
+        <a href="/tags/stm32/" class="print-no-link">#stm32</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>嵌入式系统复习重点</div>
+      <div>https://piececao.github.io/2025/06/30/嵌入式系统 复习重点/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Aŭtoro</div>
+          <div>Piececao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Postigita</div>
+          <div>June 30, 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Lizenta</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/11/%E6%A0%91%E8%8E%93%E6%B4%BEpico%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" title="树莓派pico开发环境搭建(Pico SDK)">
+                        <span class="hidden-mobile">树莓派pico开发环境搭建(Pico SDK)</span>
+                        <span class="visible-mobile">Sekva afiŝo</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Enhavtabelo</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Serĉi</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">ŝlosivorto</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blogo funkcias plej bone kun JavaScript ebligita</div>
+  </noscript>
+</body>
+</html>
