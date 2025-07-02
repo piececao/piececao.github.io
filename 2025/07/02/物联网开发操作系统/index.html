@@ -27,8 +27,12 @@
 <meta property="og:description" content="大题（代码解析）PPT例子、实验代码看懂（理解）  其他题目一共五章内容绪论（比较少）第二张比较多3、4、6比重差不多一样多 第一章TinyOS的技术特点  组件化编程（Componented-Based） 事件驱动模式（Event-Driven） 轻量级线程（lightweight thread） 两级调度方式（Tasks And Events Concurrency Model） 分阶段作业（">
 <meta property="og:locale">
 <meta property="og:image" content="https://piececao.github.io/assets/img20250703013231.png">
+<meta property="og:image" content="https://piececao.github.io/assets/img20250703030406.png">
+<meta property="og:image" content="https://piececao.github.io/assets/img20250703032219.png">
+<meta property="og:image" content="https://piececao.github.io/assets/img20250703032442.png">
+<meta property="og:image" content="https://piececao.github.io/assets/img20250703032643.png">
 <meta property="article:published_time" content="2025-07-02T09:40:34.638Z">
-<meta property="article:modified_time" content="2025-07-02T18:52:47.753Z">
+<meta property="article:modified_time" content="2025-07-02T19:37:18.471Z">
 <meta property="article:author" content="Piececao">
 <meta property="article:tag" content="嵌入式">
 <meta property="article:tag" content="物联网">
@@ -126,7 +130,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/" target="_self">
                 <i class="iconfont icon-home-fill"></i>
-                <span>Home</span>
+                <span>Startseite</span>
               </a>
             </li>
           
@@ -138,7 +142,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
-                <span>Archives</span>
+                <span>Archiv</span>
               </a>
             </li>
           
@@ -150,7 +154,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
-                <span>Categories</span>
+                <span>Kategorien</span>
               </a>
             </li>
           
@@ -162,7 +166,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
-                <span>Tags</span>
+                <span>Schlagwörter</span>
               </a>
             </li>
           
@@ -174,7 +178,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
-                <span>About</span>
+                <span>Über</span>
               </a>
             </li>
           
@@ -231,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.9k words
+          4.1k wörter
         
       </span>
     
@@ -242,7 +246,7 @@
         
         
         
-          33 mins
+          34 minuten
         
       </span>
     
@@ -636,9 +640,11 @@
 <p>最后，在<code>MainAbilitySlice.java</code>中，通过<code>setUIContent()</code>加载该xml布局。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MainAbilitySlice</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbilitySlice</span> &#123;<br>	<span class="hljs-meta">@Override</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onStart</span> <span class="hljs-params">(Intent intent)</span>&#123;<br>		Super.onStart(intent);<br><br>		<span class="hljs-comment">// 这一行是加载xml布局</span><br>		Super.setUIContent(ResourceTable.Layout_text);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
+<p>运行效果：</p>
+<p><img src="/assets/img20250703030406.png" srcset="/img/loading.gif" lazyload alt="XML创建Text效果"></p>
 <p>Java版：打开<code>MainAbilitySlice.java</code>文件，找到<code>onStart()</code>方法，创建Text组件。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Text</span> <span class="hljs-variable">text</span> <span class="hljs-operator">=</span> (Text) findComponentById(ResourceTable.Id_text); <span class="hljs-comment">// 获取布局中组件</span><br>text.setText(<span class="hljs-string">&quot;text组件&quot;</span>); <span class="hljs-comment">// 设置文本</span><br>text.setTextSize(<span class="hljs-number">66</span>);<span class="hljs-comment">// 设置文字大小</span><br>text.setTextColor(Color.WHITE);<span class="hljs-comment">// 设置文字颜色</span><br>text.setWidth(<span class="hljs-number">300</span>);<br>text.setHeight(<span class="hljs-number">150</span>);<br></code></pre></td></tr></table></figure>
-<p>（和xml差不多）</p>
+<p>（和xml差不多）<br>text</p>
 <p>按钮组件（<code>Button</code>）</p>
 <p>Button无自有的XML属性，共有XML属性继承自Text。</p>
 <p>普通按钮和其他按钮的区别在于不需要设置任何形状，只设置文本和背景颜色即可。</p>
@@ -647,9 +653,26 @@
 <ul>
 <li>椭圆按钮：设置<code>background_element</code>实现，设置<code>background_element</code>的<code>shape</code>属性为<code>oval</code>（椭圆）</li>
 <li>胶囊按钮：指定<code>background_element</code>的背景文件为<code>capsule_button.xml</code>实现，在<br><code>capsule_button.xml</code>文件中设置<code>shape</code>为矩形(<code>rectangle</code>)，并且指定<code>corners</code>元素的<br><code>ohos:radius</code>值。</li>
+<li>圆形按钮：和椭圆按钮的区别在于组件本身的宽度和高度需要相同。</li>
 </ul>
 <p>Toast对话框</p>
-<h2 id="Page-Ability-不多"><a href="#Page-Ability-不多" class="headerlink" title="Page Ability(不多)"></a>Page Ability(不多)</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ToastDialog</span> <span class="hljs-variable">toastDialog</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ToastDialog</span>(<span class="hljs-built_in">this</span>); <span class="hljs-comment">// 创建toastDialog</span><br>toastDialog.setText(<span class="hljs-string">&quot;网络连接失败。&quot;</span>).show(); <span class="hljs-comment">// 显示toastDialog</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="Ability-不多"><a href="#Ability-不多" class="headerlink" title="Ability (不多)"></a>Ability (不多)</h2><h3 id="Page-Ability"><a href="#Page-Ability" class="headerlink" title="Page Ability"></a>Page Ability</h3><ul>
+<li>显示 Ability：需要调用父类Ability的onStart()方法，并使用super.setUIContent()方法加载之前创建的布局文件my_first_layout.xml。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> ohos.aafwk.ability.Ability;<br><span class="hljs-keyword">import</span> ohos.aafwk.content.Intent;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyFirstAbility</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Ability</span> &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onStart</span><span class="hljs-params">(Intent intent)</span><br>	&#123;<br>		<span class="hljs-comment">// 调用父类onStart方法</span><br>		<span class="hljs-built_in">super</span>.onStart(intent);<br>		<span class="hljs-built_in">super</span>.setUIContent(ResourceTable.Layout_my_first_layout);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>修改<code>MyFirstAbility</code>的配置信息的<code>skills</code>部分</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;skills&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><br>	<span class="hljs-attr">&quot;entities&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>		<span class="hljs-string">&quot;entity.system.home&quot;</span><br>	<span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>	<span class="hljs-attr">&quot;actions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>		<span class="hljs-string">&quot;action.system.home&quot;</span><br>	<span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+<p>一个应用只能有一个主Ability，HarmonyOS只会显示在<code>config.json</code>文件中遇到的第一个主Ability。</p>
+<ul>
+<li>销毁：<code>terminateAbility()</code></li>
+</ul>
+<h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><p><img src="/assets/img20250703032219.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/assets/img20250703032442.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/assets/img20250703032643.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Service-Ability（只考一个小点）"><a href="#Service-Ability（只考一个小点）" class="headerlink" title="Service Ability（只考一个小点）"></a>Service Ability（只考一个小点）</h3><p>开启&amp;停止<br>生命周期</p>
+
                 
               </div>
             
@@ -704,20 +727,20 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>Author</div>
+          <div>Beitragsautor</div>
           <div>Piececao</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>Posted on</div>
+          <div>Veröffentlicht am</div>
           <div>July 2, 2025</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>Licensed under</div>
+          <div>Urheberrechtshinweis</div>
           <div>
             
               
@@ -749,7 +772,7 @@
                     
                       <a href="/2025/06/30/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%20%E5%A4%8D%E4%B9%A0%E9%87%8D%E7%82%B9/" title="嵌入式系统复习重点">
                         <span class="hidden-mobile">嵌入式系统复习重点</span>
-                        <span class="visible-mobile">Next</span>
+                        <span class="visible-mobile">Nächster</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -770,7 +793,7 @@
     <div id="toc">
   <p class="toc-header">
     <i class="iconfont icon-list"></i>
-    <span>Table of Contents</span>
+    <span>Inhaltsverzeichnis</span>
   </p>
   <div class="toc-body" id="toc-body"></div>
 </div>
@@ -826,7 +849,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -834,7 +857,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+          <label data-error="x" data-success="v" for="local-search-input">Stichwort</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -997,7 +1020,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+    <div class="noscript-warning">Blog funktioniert am besten mit aktiviertem JavaScript</div>
   </noscript>
 </body>
 </html>
