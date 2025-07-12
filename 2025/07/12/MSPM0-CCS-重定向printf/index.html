@@ -19,21 +19,24 @@
   <meta name="author" content="Piececao">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="在重定向printf的时候往往是直接重写printf调用的fpuc函数，就像这样： 12345678910#ifndef PRINTF_H_#define PRINTF_H_#include &lt;stdio.h&gt;#include &quot;ti_msp_dl_config.h&quot;intfputc(int _c, FILE *_fp) &#123;    DL_UART_tran">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://piececao.github.io/1970/01/01/hello-world/index.html">
+<meta property="og:title" content="MSPM0(CCS)重定向printf">
+<meta property="og:url" content="https://piececao.github.io/2025/07/12/MSPM0-CCS-%E9%87%8D%E5%AE%9A%E5%90%91printf/index.html">
 <meta property="og:site_name" content="德狗仪器">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="在重定向printf的时候往往是直接重写printf调用的fpuc函数，就像这样： 12345678910#ifndef PRINTF_H_#define PRINTF_H_#include &lt;stdio.h&gt;#include &quot;ti_msp_dl_config.h&quot;intfputc(int _c, FILE *_fp) &#123;    DL_UART_tran">
 <meta property="og:locale">
-<meta property="article:published_time" content="1970-01-01T00:00:12.000Z">
-<meta property="article:modified_time" content="2025-02-11T14:13:21.278Z">
+<meta property="article:published_time" content="2025-07-12T15:43:13.000Z">
+<meta property="article:modified_time" content="2025-07-12T15:45:59.051Z">
 <meta property="article:author" content="Piececao">
+<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="MSPM0">
+<meta property="article:tag" content="C语言">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Hello World | 德狗仪器</title>
+  <title>MSPM0(CCS)重定向printf | 德狗仪器</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -203,7 +206,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle">Hello World</span>
+            <span id="subtitle">MSPM0(CCS)重定向printf</span>
           
         </div>
 
@@ -214,8 +217,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="1970-01-01 08:00" pubdate>
-          January 1, 1970 am
+        <time datetime="2025-07-12 23:43" pubdate>
+          July 12, 2025 pm
         </time>
       </span>
     
@@ -226,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          18 wörter
+          315 wörter
         
       </span>
     
@@ -237,7 +240,7 @@
         
         
         
-          1 minuten
+          3 minuten
         
       </span>
     
@@ -274,24 +277,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Hello World</h1>
+            <h1 id="seo-header">MSPM0(CCS)重定向printf</h1>
             
             
               <div class="markdown-body">
                 
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+                <p>在重定向printf的时候往往是直接重写printf调用的fpuc函数，就像这样：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> PRINTF_H_</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> PRINTF_H_</span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;ti_msp_dl_config.h&quot;</span></span><br><span class="hljs-type">int</span><br><span class="hljs-title function_">fputc</span><span class="hljs-params">(<span class="hljs-type">int</span> _c, FILE *_fp)</span> &#123;<br>    DL_UART_transmitData(Console_INST, (<span class="hljs-type">uint8_t</span>)_c);<br>    <span class="hljs-keyword">return</span> _c;<br>&#125;<br><span class="hljs-meta">#<span class="hljs-keyword">endif</span> <span class="hljs-comment">/* printf.h */</span></span><br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p>但是在CCS中可能会出现这样的错误：<code>error #10056: symbol &quot;fputc&quot; redefined: first defined in &quot;./main-blinky.o&quot;; redefined in &quot;C:\ti\ccs2011\ccs\tools\compiler\ti-cgt-armllvm_4.0.2.LTS\lib\armv6m-ti-none-eabi/c/libc.a&amp;lt;fputc.c.obj&amp;gt;&quot; </code></p>
+<p>其原因是TI默认的C&#x2F;C++库的fpuc没有设置weak属性，像这样：<code>__attribute__((weak)) fputc(int ch, FILE *stream)</code><br>导致自己编写的fputc不能覆盖原先的定义，所以最好的方法是：重新写一个printf</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;ti_msp_dl_config.h&quot;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdarg.h&gt;</span></span><br><br><span class="hljs-comment">// please ensure you have enough</span><br><span class="hljs-type">static</span> <span class="hljs-type">char</span> buffer[<span class="hljs-number">40</span>];  <span class="hljs-comment">// Adjust size as needed</span><br><span class="hljs-type">void</span> <span class="hljs-title function_">cprintf</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *format, ...)</span><br>&#123;<br>    va_list args;<br>    va_start(args, format);<br>    <span class="hljs-type">size_t</span> len = <span class="hljs-number">0</span>;<br>    <span class="hljs-comment">// Format the string into buffer</span><br>    len = vsnprintf((<span class="hljs-type">char</span> *)buffer, <span class="hljs-keyword">sizeof</span>(buffer), format, args);<br>    va_end(args);<br>    <span class="hljs-comment">// Send each character to UART</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-type">size_t</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">strlen</span>(buffer); i++) &#123;<br>        <span class="hljs-keyword">while</span>(DL_UART_isBusy(Console_INST));<br>        DL_UART_transmitData(Console_INST, buffer[i]);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>如果在执行 vsnprintf 的过程中程序卡死（进了错误中断），是因为它访问了不该访问的内存（栈内存太小了），常见的作法就是扩大栈内存的大小，在 CCS 中的项目文件夹右键选择属性(properties)，在arm linker的设置下面设置栈内存（Set C system stack size）的大小</p>
 
                 
               </div>
@@ -301,6 +299,17 @@
               <div class="post-metas my-3">
   
   
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="print-no-link">#嵌入式</a>
+      
+        <a href="/tags/MSPM0/" class="print-no-link">#MSPM0</a>
+      
+        <a href="/tags/C%E8%AF%AD%E8%A8%80/" class="print-no-link">#C语言</a>
+      
+    </div>
+  
 </div>
 
 
@@ -309,8 +318,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>https://piececao.github.io/1970/01/01/hello-world/</div>
+      <div>MSPM0(CCS)重定向printf</div>
+      <div>https://piececao.github.io/2025/07/12/MSPM0-CCS-重定向printf/</div>
     </div>
     <div class="license-meta">
       
@@ -322,7 +331,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Veröffentlicht am</div>
-          <div>January 1, 1970</div>
+          <div>July 12, 2025</div>
         </div>
       
       
@@ -354,15 +363,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/06/%E6%B5%8B%E8%AF%95hexo/" title="测试hexo">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">测试hexo</span>
-                        <span class="visible-mobile">Vorheriger</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2025/07/02/%E7%89%A9%E8%81%94%E7%BD%91%E5%BC%80%E5%8F%91%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" title="物联网开发操作系统">
+                        <span class="hidden-mobile">物联网开发操作系统</span>
+                        <span class="visible-mobile">Nächster</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
