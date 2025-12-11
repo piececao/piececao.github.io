@@ -1,0 +1,750 @@
+
+
+<!DOCTYPE html>
+<html lang="de" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/favicon.webp">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ff5975">
+  <meta name="author" content="Piececao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="PICO上手 树莓派pico的板子很小一片，和STM32 Blue Pill差不多的大小。上面有USB接口，可以通过USB烧录uf2格式的程序文件。 PICO的主控室RP2040，具有：  双核 Arm Cortex-M0 + @ 133MHz 内置 264KB SRAM 和 2MB 的板载闪存 专用 QSPI 总线 DMA 控制器 30 个 GPIO 引脚，其中 4 个可用作模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派pico开发环境搭建(Pico SDK)">
+<meta property="og:url" content="https://piececao.github.io/2025/02/11/%E6%A0%91%E8%8E%93%E6%B4%BEpico%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
+<meta property="og:site_name" content="德狗仪器">
+<meta property="og:description" content="PICO上手 树莓派pico的板子很小一片，和STM32 Blue Pill差不多的大小。上面有USB接口，可以通过USB烧录uf2格式的程序文件。 PICO的主控室RP2040，具有：  双核 Arm Cortex-M0 + @ 133MHz 内置 264KB SRAM 和 2MB 的板载闪存 专用 QSPI 总线 DMA 控制器 30 个 GPIO 引脚，其中 4 个可用作模">
+<meta property="og:locale" content="de_DE">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-02-19-16-13-37-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-02-19-16-41-46-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-02-19-16-53-34-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-02-19-18-12-08-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-03-02-22-36-57-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-03-02-22-38-04-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-03-02-22-38-55-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-03-02-22-39-29-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-03-02-22-41-47-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-03-02-22-36-32-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-03-03-14-07-49-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-03-03-15-03-15-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-03-02-22-36-08-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-03-03-16-43-05-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-03-03-16-46-47-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-03-03-16-47-43-image.png">
+<meta property="og:image" content="https://piececao.github.io/assets/2025-03-03-17-11-42-image.png">
+<meta property="article:published_time" content="2025-02-11T14:16:21.000Z">
+<meta property="article:modified_time" content="2025-12-10T15:21:46.749Z">
+<meta property="article:author" content="Piececao">
+<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="rp2040">
+<meta property="article:tag" content="环境搭建">
+<meta property="article:tag" content="Pico SDK">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://piececao.github.io/assets/2025-02-19-16-13-37-image.png">
+  
+  
+  
+  <title>树莓派pico开发环境搭建(Pico SDK) | 德狗仪器</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"piececao.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":["home"]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>德狗仪器</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Startseite</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archiv</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Kategorien</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Schlagwörter</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>Über</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/74958858_p0.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.45)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">树莓派pico开发环境搭建(Pico SDK)</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-02-11 22:16" pubdate>
+          11. Februar 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.1k wörter
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 minuten
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">树莓派pico开发环境搭建(Pico SDK)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="pico上手">PICO上手</h1>
+<p>树莓派pico的板子很小一片，和STM32 Blue
+Pill差不多的大小。上面有USB接口，可以通过USB烧录uf2格式的程序文件。</p>
+<p>PICO的主控室RP2040，具有：</p>
+<ul>
+<li><p>双核 Arm Cortex-M0 + @ 133MHz</p></li>
+<li><p>内置 264KB SRAM 和 2MB 的板载闪存</p></li>
+<li><p>专用 QSPI 总线</p></li>
+<li><p>DMA 控制器</p></li>
+<li><p>30 个 GPIO 引脚，其中 4 个可用作模拟输入</p></li>
+<li><p>2 个 UART、2 个 SPI 控制器和 2 个 I2C 控制器</p></li>
+<li><p>16 个 PWM 通道</p></li>
+<li><p>USB 1.1 主机和设备支持</p></li>
+<li><p>8 个树莓派可编程
+I/O（PIO）状态机，用于自定义外围设备支持</p></li>
+<li><p>支持 UF2 的 USB 大容量存储启动模式，用于拖放式编程</p></li>
+</ul>
+<figure>
+<img src="/assets/2025-02-19-16-13-37-image.png" srcset="/img/loading.gif" lazyload
+alt="树莓派Pico引脚图" />
+<figcaption aria-hidden="true">树莓派Pico引脚图</figcaption>
+</figure>
+<h1 id="烧录">烧录</h1>
+<p>下载程序文件<a
+target="_blank" rel="noopener" href="https://datasheets.raspberrypi.com/soft/blink.uf2">blink.uf2</a>，按住pico板子上的“BOOTSEL”按键，然后用USB数据线把pico连接到电脑上，在电脑上就可以看到连接了一个USB设备“RPI-RP2”</p>
+<p><img src="/assets/2025-02-19-16-41-46-image.png" srcset="/img/loading.gif" lazyload /></p>
+<p>把blink.uf2拖进去就可以烧录了。烧录完成USB会自动断开连接，板子开始执行程序文件。</p>
+<p><img src="/assets/2025-02-19-16-53-34-image.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="搭建开发环境简易版">搭建开发环境（简易版）</h1>
+<p>首先你需要一个<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">VSCode</a></p>
+<p>在vscode的扩展商店里面搜索安装Raspberry Pi Pico扩展即可</p>
+<p><strong>缺点：这种方式特别依赖网络，由于众所周知的原因，不建议使用这种方法</strong></p>
+<p><img src="/assets/2025-02-19-18-12-08-image.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="手动配置pico-sdk">手动配置Pico SDK</h1>
+<h2 id="安装必要工具">安装必要工具</h2>
+<p>除了上面提到的<a
+target="_blank" rel="noopener" href="https://code.visualstudio.com/">VSCode</a>，还需要安装gcc交叉编译器、cmake。</p>
+<h3 id="windows">Windows</h3>
+<p>Windows下可以在<a
+target="_blank" rel="noopener" href="https://developer.arm.com/downloads/-/arm-gnu-toolchain-downloads">arm网站</a>上下载交叉编译工具，安装或者解压后把bin目录<a
+target="_blank" rel="noopener" href="https://cn.bing.com/search?pc=MOZI&amp;form=MOZLBR&amp;q=%E6%B7%BB%E5%8A%A0path">添加到PATH中</a>。<a
+target="_blank" rel="noopener" href="https://github.com/Kitware/CMake/releases/download/v4.0.0-rc2/cmake-4.0.0-rc2-windows-x86_64.msi">下载</a>安装<a
+target="_blank" rel="noopener" href="https://cmake.org/download/">cmake</a>，安装的时候勾选“添加 CMake
+到环境变量”(Add CMake to the PATH environment variable)。</p>
+<p>下载Visual Studio（用于nmake）</p>
+<p><img
+src="/assets/2025-03-03-13-49-16-f33299f0-28a4-4a5e-af45-bee6ccc6ae0f.png" srcset="/img/loading.gif" lazyload /></p>
+<p>勾选“使用C++的桌面开发”</p>
+<p><img src="/assets/2025-03-02-22-36-57-image.png" srcset="/img/loading.gif" lazyload /></p>
+<p>打开cmd(win+x -&gt; 运行 -&gt; 输入cmd -&gt;
+确定)，测试工具是否安装成功。</p>
+<p>输入<code>cmake</code>，回车</p>
+<p><img src="/assets/2025-03-02-22-38-04-image.png" srcset="/img/loading.gif" lazyload /></p>
+<blockquote>
+<p>失败</p>
+</blockquote>
+<p><img src="/assets/2025-03-02-22-38-55-image.png" srcset="/img/loading.gif" lazyload /></p>
+<blockquote>
+<p>成功</p>
+</blockquote>
+<p>输入<code>arm-none-eabi-gcc</code>，回车</p>
+<p><img src="/assets/2025-03-02-22-39-29-image.png" srcset="/img/loading.gif" lazyload /></p>
+<blockquote>
+<p>成功</p>
+</blockquote>
+<p>安装<a
+target="_blank" rel="noopener" href="https://www.python.org/ftp/python/3.13.2/python-3.13.2-amd64.exe">Python3</a></p>
+<p><img src="/assets/2025-03-02-22-41-47-image.png" srcset="/img/loading.gif" lazyload /></p>
+<p>同样勾选添加到path</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/443527549">安装Git</a></p>
+<h3 id="linux">Linux</h3>
+<p>以Debian系为例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell-session">sudo apt install cmake gcc-arm-none-eabi libnewlib-arm-none-eabi libstdc++-arm-none-eabi-newlib<br></code></pre></td></tr></table></figure>
+<p>结束！</p>
+<h2 id="下载pi-pico-sdk">下载Pi Pico SDK</h2>
+<p>在pico-sdk的<a
+target="_blank" rel="noopener" href="https://github.com/raspberrypi/pico-sdk/releases">github
+release</a>页面下载pico-sdk-x.x.x.tar.gz，解压</p>
+<p><img src="/assets/2025-03-02-22-36-32-image.png" srcset="/img/loading.gif" lazyload /></p>
+<h2 id="编译picotoolwindows">编译Picotool（Windows）</h2>
+<p>在Github上下载<a
+target="_blank" rel="noopener" href="https://github.com/libusb/libusb/releases">libusb</a>并解压</p>
+<p><img src="/assets/2025-03-03-14-07-49-image.png" srcset="/img/loading.gif" lazyload /></p>
+<p>打开“Developer Command Prompt for VS 2022”然后git
+clone一下picotool的源码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs batch">REM 克隆picotool的源代码<br>git clone https://github.com/raspberrypi/picotool.git<br>mkdir build<br>cd build<br>REM PICO_SDK_PATH 是pico-sdk的路径，LIBUSB是前面的解压的libusb的路径<br>REM CMAKE_INSTALL_PREFIX是指定的picotool的安装路径<br>cmake -G &quot;NMake Makefiles&quot; .. -DPICO_SDK_PATH=D:\Programs\pico-sdk -DLIBUSB_ROOT=D:\Programs\libusb -DCMAKE_INSTALL_PREFIX=D:\Programs\picotool_bin -DPICOTOOL_FLAT_INSTALL=1<br>REM 看到提示“-- Build files have been written to: xxxxxx”说明cmake配置成功，可以用nmake开始编译了<br>nmake<br>REM 把picotool安装到CMAKE_INSTALL_PREFIX<br>nmake install<br></code></pre></td></tr></table></figure>
+<p>nmake结束后，在picotool安装目录下可以看到一个picotool文件夹</p>
+<p><img src="/assets/2025-03-03-15-03-15-image.png" srcset="/img/loading.gif" lazyload /></p>
+<h1 id="创建新工程">创建新工程</h1>
+<p>把pico-sdk目录下的<code>external/pico_sdk_import.cmake</code>复制到你的工程目录下</p>
+<p><img src="/assets/2025-03-02-22-36-08-image.png" srcset="/img/loading.gif" lazyload />就像这样</p>
+<p>在工程目录下新建一个<code>CMakeLists.txt</code>，输入如下内容：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-keyword">cmake_minimum_required</span>(VERSION <span class="hljs-number">3.13</span>)<br><br><span class="hljs-keyword">set</span>(PICO_SDK_PATH <span class="hljs-string">&quot;D:\\Programs\\pico-sdk&quot;</span>)<br><span class="hljs-keyword">set</span>(PICO_BOARD <span class="hljs-string">&quot;pico&quot;</span>)<br><span class="hljs-keyword">set</span>(picotool_DIR <span class="hljs-string">&quot;D:\\Programs\\picotool_bin\picotool&quot;</span>)<br><br><span class="hljs-comment"># initialize the SDK based on PICO_SDK_PATH</span><br><span class="hljs-comment"># <span class="hljs-doctag">note:</span> this must happen before project()</span><br><span class="hljs-keyword">include</span>(pico_sdk_import.cmake)<br><br><span class="hljs-keyword">project</span>(my_project)<br><br><span class="hljs-comment"># initialize the Raspberry Pi Pico SDK</span><br>pico_sdk_init()<br><br><span class="hljs-comment"># rest of your project</span><br></code></pre></td></tr></table></figure>
+<p><code>my_project是工程名字</code>；<code>PICO_SDK_PATH</code>是pico-sdk的目录；<code>picotool_DIR</code>是picotool的所在目录；<code>PICO_BOARD</code>是pico板子型号，在pico-sdk目录的<code>srd/boards/include/boards</code>目录下可以看到完整开发板支持列表。</p>
+<p>新建一个hello.c：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&quot;pico/stdlib.h&quot;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    setup_default_uart();<br>    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>)&#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;hello, world\r\n&quot;</span>);<br>        sleep_ms(<span class="hljs-number">1000</span>);<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>然后在<code>CMakeLists.txt</code>的末尾添加如下内容：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cmake"><span class="hljs-comment"># 添加hello.c源文件</span><br><span class="hljs-keyword">add_executable</span>(hello<br>    hello.c<br>)<br><br><span class="hljs-comment"># 链接pico_stdlib库</span><br><span class="hljs-comment"># Add pico_stdlib library which aggregates commonly used features</span><br><span class="hljs-keyword">target_link_libraries</span>(hello pico_stdlib)<br><br><span class="hljs-comment"># 转换为uf2文件以备烧录</span><br><span class="hljs-comment"># create map/bin/hex/uf2 file in addition to ELF.</span><br>pico_add_extra_outputs(hello)<br></code></pre></td></tr></table></figure>
+<p>hello工程的文件如下所示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs batch">D:\Programs\hello&gt;dir<br> 驱动器 D 中的卷没有标签。<br> 卷的序列号是 9A33-48BC<br><br> D:\Programs\hello 的目录<br><br>2025/03/03  16:39    &lt;DIR&gt;          .<br>2025/03/03  16:39    &lt;DIR&gt;          ..<br>2025/03/03  15:02               623 CMakeLists.txt<br>2025/03/02  21:44               139 hello.c<br>2025/02/19  07:55             6,022 pico_sdk_import.cmake<br>               3 个文件          6,784 字节<br>               2 个目录 78,325,645,312 可用字节<br></code></pre></td></tr></table></figure>
+<h1 id="编译烧录">编译&amp;烧录</h1>
+<p>还是在Developer Command Prompt for VS 2022终端中打开项目的文件夹</p>
+<p><img src="/assets/2025-03-03-16-43-05-image.png" srcset="/img/loading.gif" lazyload /></p>
+<p>然后敲命令编译：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs batch">REM 新建一个build文件夹用来存放编译时产生的文件<br>md build<br>cd build<br>REM 生成用于NMake Makefiles的Makefile文件<br>cmake -G &quot;NMake Makefiles&quot; ..<br>REM 编译并生成uf2文件<br>nmake<br></code></pre></td></tr></table></figure>
+<p>当出现这样的提示就说明nmake编译完成了</p>
+<p><img src="/assets/2025-03-03-16-46-47-image.png" srcset="/img/loading.gif" lazyload /></p>
+<p>在build目录下就可以看到我们需要的uf2文件了</p>
+<p><img src="/assets/2025-03-03-16-47-43-image.png" srcset="/img/loading.gif" lazyload /></p>
+<p>按住<code>BOOTSEL</code>连接pico，把uf2文件拖进去就可以编译了。</p>
+<p>程序中设置启用的是默认串口，即pico的1、2脚，波特率为115200，连接串口就会看到每隔一秒钟重复发送的<code>hello, world</code>。</p>
+<p><img src="/assets/2025-03-03-17-11-42-image.png" srcset="/img/loading.gif" lazyload /></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="print-no-link">#嵌入式</a>
+      
+        <a href="/tags/rp2040/" class="print-no-link">#rp2040</a>
+      
+        <a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="print-no-link">#环境搭建</a>
+      
+        <a href="/tags/Pico-SDK/" class="print-no-link">#Pico SDK</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>树莓派pico开发环境搭建(Pico SDK)</div>
+      <div>https://piececao.github.io/2025/02/11/树莓派pico开发环境搭建/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Beitragsautor</div>
+          <div>Piececao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Veröffentlicht am</div>
+          <div>11. Februar 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Urheberrechtshinweis</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/06/30/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%20%E5%A4%8D%E4%B9%A0%E9%87%8D%E7%82%B9/" title="嵌入式系统复习重点">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">嵌入式系统复习重点</span>
+                        <span class="visible-mobile">Vorheriger</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/02/06/%E6%B5%8B%E8%AF%95hexo/" title="测试hexo">
+                        <span class="hidden-mobile">测试hexo</span>
+                        <span class="visible-mobile">Nächster</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Inhaltsverzeichnis</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Stichwort</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog funktioniert am besten mit aktiviertem JavaScript</div>
+  </noscript>
+</body>
+</html>

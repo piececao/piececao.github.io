@@ -1,0 +1,1056 @@
+
+
+<!DOCTYPE html>
+<html lang="de" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/favicon.webp">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#ff5975">
+  <meta name="author" content="Piececao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="大题（代码解析） PPT例子、实验代码看懂（理解） 其他题目 一共五章内容 绪论（比较少） 第二张比较多 3、4、6比重差不多一样多 ## 第一章 TinyOS的技术特点  组件化编程（Componented-Based） 事件驱动模式（Event-Driven） 轻量级线程（lightweight thread） 两级调度方式（Tasks And Events Concurre">
+<meta property="og:type" content="article">
+<meta property="og:title" content="物联网开发操作系统">
+<meta property="og:url" content="https://piececao.github.io/2025/07/02/%E7%89%A9%E8%81%94%E7%BD%91%E5%BC%80%E5%8F%91%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:site_name" content="德狗仪器">
+<meta property="og:description" content="大题（代码解析） PPT例子、实验代码看懂（理解） 其他题目 一共五章内容 绪论（比较少） 第二张比较多 3、4、6比重差不多一样多 ## 第一章 TinyOS的技术特点  组件化编程（Componented-Based） 事件驱动模式（Event-Driven） 轻量级线程（lightweight thread） 两级调度方式（Tasks And Events Concurre">
+<meta property="og:locale" content="de_DE">
+<meta property="og:image" content="https://piececao.github.io/assets/img20250703013231.png">
+<meta property="og:image" content="https://piececao.github.io/assets/img20250703030406.png">
+<meta property="og:image" content="https://piececao.github.io/assets/img20250703032219.png">
+<meta property="og:image" content="https://piececao.github.io/assets/img20250703032442.png">
+<meta property="og:image" content="https://piececao.github.io/assets/img20250703032643.png">
+<meta property="article:published_time" content="2025-07-02T09:40:30.000Z">
+<meta property="article:modified_time" content="2025-12-10T15:21:46.751Z">
+<meta property="article:author" content="Piececao">
+<meta property="article:tag" content="嵌入式">
+<meta property="article:tag" content="物联网">
+<meta property="article:tag" content="期末考">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://piececao.github.io/assets/img20250703013231.png">
+  
+  
+  
+  <title>物联网开发操作系统 | 德狗仪器</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"piececao.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":["home"]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>德狗仪器</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Startseite</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archiv</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Kategorien</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Schlagwörter</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>Über</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/74958858_p0.webp') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.45)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle">物联网开发操作系统</span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2025-07-02 17:40" pubdate>
+          2. Juli 2025 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4k wörter
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          34 minuten
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">物联网开发操作系统</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="大题代码解析">大题（代码解析）</h1>
+<h2 id="ppt例子实验代码看懂理解">PPT例子、实验代码看懂（理解）</h2>
+<h1 id="其他题目">其他题目</h1>
+<p>一共五章内容 绪论（比较少） 第二张比较多 3、4、6比重差不多一样多 ##
+第一章 TinyOS的技术特点</p>
+<ul>
+<li>组件化编程（Componented-Based）</li>
+<li>事件驱动模式（Event-Driven）</li>
+<li>轻量级线程（lightweight thread）</li>
+<li>两级调度方式（Tasks And Events Concurrency Model）</li>
+<li>分阶段作业（Split-Phase Operations） 六个特点理解是什么意思</li>
+</ul>
+<p>TinyOS的编程语言：nesC 组件分类：</p>
+<ul>
+<li>Module组件（模块）：实现某种逻辑功能；</li>
+<li>Configuration组件（配件）：将各个组件连接起来成为一个整体。不完成功能实现</li>
+</ul>
+<p>HarmonyOS三大特性</p>
+<ol type="1">
+<li>硬件互助、资源共享
+<ul>
+<li><strong>分布式软总线</strong> （最重要）</li>
+<li>分布式设备虚拟化</li>
+<li>分布式数据管理</li>
+<li>分布式任务调度</li>
+</ul></li>
+<li>一次开发、多端部署
+<ul>
+<li>提供了用户程序框架、Ability框架以及UI框架</li>
+<li>支持应用开发过程中多终端的业务逻辑和界面逻辑进行复用</li>
+<li>能够实现应用的一次开发、多端部署</li>
+<li>提升跨平台开发效率</li>
+</ul></li>
+<li>统一OS、弹性部署
+<ul>
+<li>通过组件化和小型化等设计方式，做到硬件资源可大可小</li>
+<li>支持多种终端设备按需弹性部署</li>
+<li>能够适配不同硬件资源和功能需求
+分布式设计的基础：<strong>分布式软总线</strong></li>
+</ul></li>
+</ol>
+<h2 id="第二章">第二章</h2>
+<p>（概念熟悉）
+接口（interface）：组件（Component）之间可以进行数据交换的唯一方式
+接口的命令（command）函数和事件（event）函数</p>
+<ul>
+<li><code>command</code>
+是命令，根据应用层的要求操作底层硬件实现相应功能，由组件本身实现</li>
+<li><code>event</code>
+是事件，由中断触发，标志着系统状态的改变，由组件的使用者实现</li>
+</ul>
+<p><code>use</code>和<code>provide</code>接口</p>
+<ul>
+<li><code>use</code>使用接口</li>
+<li><code>provide</code>提供接口</li>
+<li>一个接口可以有多个实例</li>
+</ul>
+<p>每个nesC有且只有一个顶层配件（top-level
+configuration）连接内部组件，顶层配件即为makefile文件的第一行指定的<code>COMPONENT</code>
+<strong>事件</strong>是异步中断驱动的，是有优先级区别的
+<strong>Task</strong></p>
+<ul>
+<li>定义<code>task</code>和提交<code>post</code>的关键字</li>
+<li>返回类型为void的无参数函数</li>
+<li>没有优先级，表现为FIFO（先进先出）模式。<em>事件</em>是有优先级的</li>
+<li>后台执行（异步的）</li>
+</ul>
+<p><strong>应用程序开发步骤</strong></p>
+<ol type="1">
+<li>在/opt/tinyos-2.x/apps下建立文件夹，以应用名字命名。文件夹下需包含4个文件：定制运行环境的makefile、头文件、顶层配件、核心处理模块</li>
+<li>编写头文件（可选），里面定义了数据结构</li>
+<li>编写顶层配件
+<ul>
+<li>接口的提供和使用情况</li>
+<li>使用的组件列表</li>
+<li>组件间的接口连接关系</li>
+</ul></li>
+<li>编写核心处理模块
+<ul>
+<li>接口的提供、使用情况</li>
+<li>具体的实现代码 <code>error_t</code>为command操作的成功/失败结果
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">enum</span> &#123;</span><br>	SUCCESS = <span class="hljs-number">0</span>;<br>	FAIL = <span class="hljs-number">1</span>;<br>	ESIZE = <span class="hljs-number">2</span>; <span class="hljs-comment">// 传递参数过大</span><br>	...<br>&#125; <span class="hljs-type">error_t</span>;<br></code></pre></td></tr></table></figure>
+<code>SUCCESS</code>和<code>FAIL</code>为最常用的两种返回值 ###
+Blink例子（重要）
+Blink是一个基本的应用程序，它通过开启定时器来实现周期性地切换LED灯。
+其文件位置为<code>/opt/tinyos-2.1.x/apps/Blink</code>。
+编译下载到节点上，可以看到，该应用程序在节点的3个LED灯上显示了一个计数器。它只是简单的以4Hz的频率开关LED0，以2Hz开关LED1，以1HZ开关LED2。其效果就是：每两秒3个LED显示了二进制计数从0到7。
+Blink程序由两个文件组成：模块文件（<code>BlinkC.nc</code>）和配件文件（<code>BlinkAppC.nc</code>）。注意：所有程序都需要一个顶层配件，通常是以应用程序的名字命名。BlinkAppC就是Blink程序的配件，也是nesC编译器产生可执行文件的源头。而BlinkC则提供Blink程序的逻辑实现。BlinkAppC是用来连接BlinkC模块和Blink所需的其他功能组件。</li>
+</ul></li>
+</ol>
+<p><strong>BlinkAppC.nc</strong>，这是一个顶层配件 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp">configuration BlinkAppC<br>&#123; <br><span class="hljs-comment">// 这里一般由uses 和 provides 从句来说明使用到的和提供的接口，除了顶层</span><br><span class="hljs-comment">// 配件，模块和配件都可以使用和提供接口</span><br>&#125;<br>Implementation <span class="hljs-comment">//实现部分</span><br>&#123;<br>	components MainC, BlinkC, LedsC; <span class="hljs-comment">//BlinkC是编写的模块</span><br>	<span class="hljs-function">components <span class="hljs-keyword">new</span> <span class="hljs-title">TimerMilliC</span><span class="hljs-params">()</span> as Timer0</span>; <span class="hljs-comment">//as命名别名方便识别</span><br>	<span class="hljs-function">components <span class="hljs-keyword">new</span> <span class="hljs-title">TimerMilliC</span><span class="hljs-params">()</span> as Timer1</span>; <span class="hljs-comment">//同一组件不同实例</span><br>	<span class="hljs-function">components <span class="hljs-keyword">new</span> <span class="hljs-title">TimerMilliC</span><span class="hljs-params">()</span> as Timer2</span>;<br>	<span class="hljs-comment">//components指定了这个配件用到的组件components</span><br>	BlinkC -&gt; MainC.Boot; <span class="hljs-comment">// BlinkC.Boot -&gt; MainC.Boot</span><br>	BlinkC.Timer0 -&gt; Timer0;<span class="hljs-comment">//BlinkC.Timer0 -&gt; Timer0.Timer0</span><br>	BlinkC.Timer1 -&gt; Timer1;<span class="hljs-comment">// -&gt;是连接的意思</span><br>	BlinkC.Timer2 -&gt; Timer2;<span class="hljs-comment">// -&gt;是一种包含两个内部规范元素的连接</span><br>	BlinkC.Leds -&gt; LedsC; <span class="hljs-comment">//BlinkC.Leds -&gt; LedsC.Leds</span><br>	<span class="hljs-comment">// 也就是把负责实现应用部分的模块BlinkC与系统的组件库连接起来</span><br>	<span class="hljs-comment">// 记住， BlinkAppC 和 BlinkC 组件是不一样的。更确切的说， BlinkAppC 是由</span><br>	<span class="hljs-comment">// Blinkc 组件连同 mainc ，ledsc 和3个 timer定时器一起组成的。</span><br>&#125;<br></code></pre></td></tr></table></figure></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">module</span> <span class="hljs-title">BlinkC</span> <span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123; <br>	uses interface Timer&lt;TMilli&gt; as Timer0; <span class="hljs-comment">//定义使用到的接口</span><br>	… <span class="hljs-comment">//Timer1、Timer2的定义同上</span><br>	uses interface Leds;<br>	uses interface Boot; <br>	<span class="hljs-comment">//BlinkC 可以调用这些它使用的接口的任何命令，但必须实现这些接口的所有事件 event</span><br>&#125;<br>implementation<br>&#123;<br>	event <span class="hljs-type">void</span> Boot.<span class="hljs-built_in">booted</span>()<br>	&#123; <br>		call Timer<span class="hljs-number">0.</span><span class="hljs-built_in">startPeriodic</span>( <span class="hljs-number">250</span> ); <span class="hljs-comment">//250ms周期性触发</span><br>		call Timer<span class="hljs-number">1.</span><span class="hljs-built_in">startPeriodic</span>( <span class="hljs-number">500</span> );<br>		call Timer<span class="hljs-number">2.</span><span class="hljs-built_in">startPeriodic</span>( <span class="hljs-number">1000</span> );<br>	&#125;<br>	event <span class="hljs-type">void</span> Timer<span class="hljs-number">0.f</span>ired()<br>	&#123; <br>		<span class="hljs-built_in">dbg</span>(“BlinkC”, “Timer <span class="hljs-number">0</span> fired @ %s.\n”, <span class="hljs-built_in">sim_time_string</span>());<br>		call Leds.<span class="hljs-built_in">led0Toggle</span>(); <span class="hljs-comment">//led0灯切换灭-亮状态</span><br>	&#125;<br>	… <span class="hljs-comment">//Timer1、Timer2的fired()事件函数同上</span><br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="第三章通信">第三章（通信）</h2>
+<p><code>message_t</code>：消息缓冲抽象</p>
+<p><strong>基本通信接口</strong>，以及接口下的方法（command）</p>
+<ul>
+<li>Packet：提供了对<code>message_t</code>抽象数据类型的基本访问
+<ul>
+<li><code>void clear(message_t *msg)</code> //清空消息内容</li>
+<li><code>void setPayloadLength(message_t *msg, uint8_t len)</code>
+//设定有效载荷区的长度</li>
+<li><code>void *getPayload(message_t *msg, uint8_t len)</code>
+//获得消息有效载荷区的指针</li>
+<li><code>uint8_t payloadLength(message_t *msg)</code>
+//获得消息的有效载荷区长度</li>
+<li><code>uint8_t maxPayloadLength()</code>
+//返回有效载荷区的最大长度</li>
+</ul></li>
+<li>Send：提供基本的面向任意地址的消息发送接口
+<ul>
+<li><code>error_t send(message_t *msg, uint8_t len)</code>
+//发送消息</li>
+<li><code>error_t cancel(message_t *msg)</code> //取消消息的发送</li>
+<li><code>void sendDone(message_t *msg, error_t error)</code>
+//指示消息发送结果的<strong>事件</strong></li>
+<li><code>void *getPayload(message_t *msg, uint8_t len)</code>
+//返回消息有效载荷区的指针</li>
+<li><code>uint8_t maxPayloadLength()</code>
+//返回有效载荷区的最大长度</li>
+</ul></li>
+<li>Receive：提供最基本的消息接收接口
+提供了一个event函数receive<code>message_t *receive(message_t *msg,void *payload)</code></li>
+</ul>
+<p>主动消息接口 - AMSend - AMPacket</p>
+<p><strong>BlinkToRadio</strong>例子（3.1.4） ### 发送消息
+<code>BlinkToRadioC.nc</code> 文件 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;Timer.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span>“BlinkToRadio.h“</span><br><span class="hljs-keyword">module</span> BlinkToRadioC&#123;<br>	uses interface Boot;<br>	uses interface Leds;<br>	uses interface Timer&lt;TMilli&gt; as Timer0;<br>	<span class="hljs-comment">// 消息发送</span><br>	uses interface Packet;<br>	uses interface AMPacket;<br>	uses interface AMSend;<br>	uses interface SplitControl as AMControl;<br>&#125;<br>implementation&#123;<br>	<span class="hljs-type">uint16_t</span> counter = <span class="hljs-number">0</span>;<br>	<span class="hljs-comment">// 声明一些作用域在模块内的变量，如：pkt，该变量用来存放</span><br>	<span class="hljs-comment">// 要发送的消息。还需要声明一个标识符，如：busy，用来跟踪</span><br>	<span class="hljs-comment">// 无线电信道是否处于发送忙的状态。</span><br>	<span class="hljs-type">bool</span> busy = FALSE;<br>	<span class="hljs-type">message_t</span> pkt;<br>	<span class="hljs-comment">// 无线模块的初始化工作。为了在系统启动时就可以使用无线模块，</span><br>	<span class="hljs-comment">// 必须在Boot.booted事件里调用AMControl.start命令。</span><br>	event <span class="hljs-type">void</span> Boot.<span class="hljs-built_in">booted</span>()&#123;<br>		call AMControl.<span class="hljs-built_in">start</span>();<br>	&#125;<br>	<br>	event <span class="hljs-type">void</span> Timer<span class="hljs-number">0.f</span>ired()&#123;<br>		counter++;<br>		call Leds.<span class="hljs-built_in">set</span>(counter);<br>	&#125;<br>	<span class="hljs-comment">// 因为TinyOS采用分阶段作业的方式，无线电功能启动和完成的</span><br>	<span class="hljs-comment">// 信号通过AMControl.startDone和AMControl.stopDone事件来传</span><br>	<span class="hljs-comment">// 递。还需要编写AMControl.startDone和AMControl.stopDone事</span><br>	<span class="hljs-comment">// 件处理函数。</span><br>	event <span class="hljs-type">void</span> AMControl.<span class="hljs-built_in">startDone</span>(<span class="hljs-type">error_t</span> err) &#123;<br>		<span class="hljs-keyword">if</span> (err == SUCCESS) &#123;<br>			call Timer<span class="hljs-number">0.</span><span class="hljs-built_in">startPeriodic</span>(TIMER_PERIOD_MILLI);<br>		&#125;<br>		<span class="hljs-keyword">else</span> &#123;<br>			call AMControl.<span class="hljs-built_in">start</span>();<br>		&#125;<br>	&#125;<br>	event <span class="hljs-type">void</span> AMControl.<span class="hljs-built_in">stopDone</span>(<span class="hljs-type">error_t</span> err) &#123;<br>	&#125;<br><br>	<span class="hljs-comment">// 调用所需的接口，编写应用程序的逻辑实现过程。</span><br>	event <span class="hljs-type">void</span> Timer<span class="hljs-number">0.f</span>ired() &#123;<br>		...<br>		<span class="hljs-keyword">if</span> (!busy) &#123;<br>			BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*) <br>				(call Packet.<span class="hljs-built_in">getPayload</span>(&amp;pkt, <span class="hljs-literal">NULL</span>));<br>			btrpkt-&gt;nodeid = TOS_NODE_ID;<br>			btrpkt-&gt;counter = counter;<br>			<span class="hljs-keyword">if</span> (call AMSend.<span class="hljs-built_in">send</span>(<br>			AM_BROADCAST_ADDR,&amp;pkt, <span class="hljs-built_in">sizeof</span>(BlinkToRadioMsg)) == SUCCESS) <br>			&#123;<br>				busy = TRUE;<br>			&#125;<br>		&#125;<br>	&#125;<br>	<span class="hljs-comment">// 实现所有使用到的接口的事件</span><br>	event <span class="hljs-type">void</span> AMSend.<span class="hljs-built_in">sendDone</span>(<span class="hljs-type">message_t</span>* msg, <span class="hljs-type">error_t</span> error) &#123;<br>		<span class="hljs-keyword">if</span> (&amp;pkt == msg) &#123;<br>			busy = FALSE;<br>		&#125;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<code>BlinkToRadio.h</code>文件 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">ifndef</span> BLINKTORADIO_H</span><br><span class="hljs-meta">#<span class="hljs-keyword">define</span> BLINKTORADIO_H</span><br><span class="hljs-keyword">enum</span>&#123;<br>	TIMER_PERIOD_MILLI = <span class="hljs-number">250</span><br>&#125;;<br><span class="hljs-keyword">typedef</span> nx_struct BlinkToRadioMsg &#123;<br>	<span class="hljs-type">nx_uint16_t</span> nodeid;<br>	<span class="hljs-type">nx_uint16_t</span> counter;<br>&#125; BlinkToRadioMsg;<br><span class="hljs-comment">/*</span><br><span class="hljs-comment">不能直接用数据读写message_t的有效载荷区，而</span><br><span class="hljs-comment">是使用一种结构体去操纵有效载荷区</span><br><span class="hljs-comment"></span><br><span class="hljs-comment">在类型名字前的nx_前缀（如 nx_uint16_t）是针对nesC语</span><br><span class="hljs-comment">言的特定说明，表示struct和uint16_t 是外部类型。外部</span><br><span class="hljs-comment">类型在所有的节点平台上具有一样的表示。</span><br><span class="hljs-comment">*/</span><br><span class="hljs-meta">#<span class="hljs-keyword">endif</span></span><br></code></pre></td></tr></table></figure>
+<code>BlinkToRadioAppC.nc</code> 配件（configuration）文件 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;Timer.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span>“BlinkToRadio.h“</span><br>configuration BlinkToRadioAppC&#123;<br>&#125;<br>implementation&#123;<br>	components MainC;<br>	components LedsC;<br>	components BlinkToRadioC as App;<br>	<span class="hljs-function">components <span class="hljs-keyword">new</span> <span class="hljs-title">TimerMilliC</span><span class="hljs-params">()</span> as Timer0</span>;<br>	<span class="hljs-comment">// 对配件BlinkToRadioAppC.nc里的实现部分进行</span><br>	<span class="hljs-comment">// 修改，增加相关组件的声明。</span><br>	components ActiveMessageC;<br>	<span class="hljs-function">components <span class="hljs-keyword">new</span> <span class="hljs-title">AMSenderC</span><span class="hljs-params">(AM_BLINKTORADIO)</span></span>;<br>	<span class="hljs-comment">// BlinkToRadioC模块使用的通信接口由这两个模块提供。</span><br>	<span class="hljs-comment">// AM_BLINKTORADIO参数指明了AMSenderC组件</span><br>	<span class="hljs-comment">// 的AM标识号（AM Type），可在BlinkToRadio.h头文件</span><br>	<span class="hljs-comment">// 里用枚举来设定AM_BLINKTORADIO的值</span><br>	<span class="hljs-comment">// 如： enum&#123;AM_BLINKTORADIO = 6;&#125;;</span><br><br>	<span class="hljs-comment">// 在配件里连接从使用者到提供者的所有接口。</span><br>	App.Packet -&gt; AMSenderC;<br>	App.AMPacket -&gt; AMSenderC;<br>	App.AMSend -&gt; AMSenderC;<br>	App.AMControl -&gt; ActiveMessageC;<br><br>	App.Boot -&gt; MainC;<br>	App.Leds -&gt; LedsC;<br>	App.Timer0 -&gt; Timer0;<br>&#125;<br></code></pre></td></tr></table></figure>
+编写<code>makefile</code>文件 <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-comment"># 告诉编译系统BlinkToRadioAppC是顶层配件</span><br>COMPONENT=BlinkToRadioAppC<br><span class="hljs-comment"># 载入TinyOS的编译系统</span><br><span class="hljs-keyword">include</span> <span class="hljs-variable">$(MAKERULES)</span> <br></code></pre></td></tr></table></figure></p>
+<h3 id="接收消息">接收消息</h3>
+<ol type="1">
+<li><p>认识相关的组件与接口。</p></li>
+<li><p>更新 BlinkToRadioC.nc里的 module区，增加所需接口的uses陈述。
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">module</span> BlinkToRadioC &#123;<br>	...<br>	uses interface Receive;<br>&#125;<br></code></pre></td></tr></table></figure></p></li>
+<li><p>声明新变量，增加所需初始化代码。</p></li>
+<li><p>增加相关程序逻辑和命令。消息的接收是一个事件驱动的过程，故不需要调用命令。</p></li>
+<li><p><strong>实现相关的事件处理程序（非初始化）。</strong>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp">event <span class="hljs-type">message_t</span>* Receive.<span class="hljs-built_in">receive</span>(<span class="hljs-type">message_t</span>* msg, <span class="hljs-type">void</span>* payload, <span class="hljs-type">uint8_t</span> len) &#123;<br>	<span class="hljs-keyword">if</span> (len == <span class="hljs-built_in">sizeof</span>(BlinkToRadioMsg)) &#123;<br>		BlinkToRadioMsg* btrpkt = (BlinkToRadioMsg*)payload;<br>		call Leds.<span class="hljs-built_in">set</span>(btrpkt-&gt;counter);<br>	&#125;<br>	<span class="hljs-keyword">return</span> msg;<br>&#125;<br></code></pre></td></tr></table></figure> 首先，判断消息的长度是否符合；接着，将 BlinkToRadioMsg
+类型的结构体指针btrpkt指向消息的有效载荷区；最后，通过指针读取消息中的计数值，并用它来设置3个LED灯的显示状态。</p></li>
+<li><p>修改BlinkToRadioAppC 配件里的 implementation
+区，增加相应的组件说明。 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp">implementation &#123;<br>	...<br>	<span class="hljs-function">components <span class="hljs-keyword">new</span> <span class="hljs-title">AMReceiverC</span><span class="hljs-params">(AM_BLINKTORADIO)</span></span>;<br>	...<br>&#125;<br></code></pre></td></tr></table></figure></p></li>
+<li><p>连接接口，从使用者到提供者。 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp">implementation &#123;<br>	...<br>	App.Receive -&gt; AMReceiverC;<br>&#125;<br></code></pre></td></tr></table></figure></p></li>
+<li><p>应用程序测试
+这个应用程序可在mica或telosb的平台上运行。使用两个节点，任一节点都会显示另一个节点的计数值。
+编译并下载
+<code>$ make micaz install.1 mib510,/dev/ttyS5</code></p></li>
+</ol>
+<p><strong>串口通信</strong> 1. 消息包格式 eg:
+<code>00 FF FF 00 04 04 00 06 00 04 00 01</code> - <code>00</code>
+表明此为AM类型信息包 - <code>FF FF</code> 目标地址 2 Byte -
+<code>00 04</code> 链路层源地址 2 Byte - <code>04</code>
+消息包长度（单位：字节） 1 Byte - <code>00</code> 网络组号 1 Byte -
+<code>06</code> AM类型 1 Byte - <code>00 04</code> Nodeid -
+<code>00 01</code> counter</p>
+<table>
+
+<thead>
+<tr>
+<th>目标地址</th>
+<th>链路层源地址</th>
+<th>消息长度</th>
+<th>网络组号</th>
+<th>AM类型</th>
+<th>Nodeid</th>
+<th>counter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>FF FF</code></td>
+<td><code>00 04</code></td>
+<td><code>04</code></td>
+<td><code>00</code></td>
+<td><code>06</code></td>
+<td><code>00 04</code></td>
+<td><code>00 01</code></td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li>MIG 三个参数 eg: <figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs makefile">COMPONENT = TestSerialAppC<br><span class="hljs-comment"># 在编译之前，要满足其他的依赖关系</span><br>BUILD_EXTRA_DEPS += TestSerial.class<br><span class="hljs-comment"># 当make clean时有额外文件（.class类型的文件和TestSerialMsg.java文件）需要清除</span><br>CLEAN_EXTRA = *.class TestSerialMsg.java<br><br><span class="hljs-comment"># 基于当前目录下所有java文件生成TestSerial.class，包括 TestSerialMsg.java</span><br><span class="hljs-section">TestSerial.class: $(wildcard *.java) TestSerialMsg.java</span><br>	javac *.java // 编译生成TestSerial.class<br>	<br><span class="hljs-section">TestSerialMsg.java:</span><br>	MIG java –target=null –java-classname=TestSerialMsg TestSerial.h TestSerialMsg –o <span class="hljs-variable">$@</span><br>	<br><span class="hljs-keyword">include</span> <span class="hljs-variable">$(MAKERULES)</span><br></code></pre></td></tr></table></figure>
+用什么语言生成接口消息（java/python/C），在哪个文件可以找到消息结构的定义，消息结构的名字</li>
+</ol>
+<table>
+
+<thead>
+<tr>
+<th>参数/<u>命令</u></th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><u>MIG</u></td>
+<td>调用MIG工具</td>
+</tr>
+<tr>
+<td><code>java</code></td>
+<td>建立java类</td>
+</tr>
+<tr>
+<td><code>–target=null</code></td>
+<td>对象平台为null</td>
+</tr>
+<tr>
+<td><code>–java-classname=TestSerialMsg</code></td>
+<td>Java类的取名</td>
+</tr>
+<tr>
+<td><code>TestSerial.h</code></td>
+<td>定义消息结构的头文件</td>
+</tr>
+<tr>
+<td><code>TestSerialMsg</code></td>
+<td>消息结构的定义名称</td>
+</tr>
+<tr>
+<td><code>–o $@</code></td>
+<td>生成文件，指生成 TestSerialMsg.java</td>
+</tr>
+</tbody>
+</table>
+<p><strong>启动</strong>
+MainC组件负责：系统平台初始化、软件平台初始化、调度器初始化</p>
+<p><strong>编译系统</strong>（重点考）
+<code>make</code>的用法（<code>install</code>和<code>reinstall</code>）区别
+<code>Makefile</code>解释-&gt;考大题 Makefile的最简形式
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs makefile"><span class="hljs-comment"># 告诉编译系统BlinkToRadioAppC是顶层配件</span><br>COMPONENT=BlinkToRadioAppC<br><span class="hljs-comment"># 载入TinyOS的编译系统</span><br><span class="hljs-keyword">include</span> <span class="hljs-variable">$(MAKERULES)</span> <br></code></pre></td></tr></table></figure></p>
+<hr />
+<p>以下为鸿蒙部分</p>
+<h2 id="java-ui-用户界面设计主要">Java UI 用户界面设计(主要)</h2>
+<p>Java 基础（不考） JavaUI 分三层：</p>
+<ul>
+<li>页面
+<ul>
+<li>容器组件（也叫做<strong>布局</strong>）
+<ul>
+<li>单体组件，最小单位</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>布局：</p>
+<ul>
+<li>定向布局（DirectionalLayout）<em>重点考</em></li>
+<li>依赖布局（DependentLayout）<em>重点考</em></li>
+<li>位置布局（PositionLayout）</li>
+<li>表格布局（TableLayout）</li>
+<li>自适应布局（AdaptiveBoxLayout）</li>
+<li>堆叠布局（StackLayout）</li>
+</ul>
+<h3 id="定向布局">定向布局</h3>
+<p>将组件按照水平或者垂直方向排布，能够方便地对齐布局内的组件。
+其支持的属性：</p>
+<ul>
+<li><p><code>alignment</code> 对齐方式</p></li>
+<li><p><code>layout_alignment</code>
+对齐方式，此为定向布局<code>DirectionalLayout</code>所包含组件支持的属性，使得组件的对齐方式可以和父组件（DirectionalLayout）设定的<code>alignment</code>不同</p></li>
+<li><p><code>orientation</code> 子布局排列方向</p></li>
+<li><p><code>weight</code> 权重（所包含的组件的属性）</p></li>
+</ul>
+<p>权重表示如图： <img src="/assets/img20250703013231.png" srcset="/img/loading.gif" lazyload
+alt="权重作用" /></p>
+<p><code>alignment</code>的取值：</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>取值说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>left</td>
+<td>表示左对齐</td>
+</tr>
+<tr>
+<td>top</td>
+<td>表示顶部对齐</td>
+</tr>
+<tr>
+<td>right</td>
+<td>表示右对齐</td>
+</tr>
+<tr>
+<td>bottom</td>
+<td>表示底部对齐</td>
+</tr>
+<tr>
+<td>horizontal_center</td>
+<td>表示水平居中对齐</td>
+</tr>
+<tr>
+<td>vertical_center</td>
+<td>表示垂直居中对齐</td>
+</tr>
+<tr>
+<td>center</td>
+<td>表示居中对齐</td>
+</tr>
+<tr>
+<td>start</td>
+<td>表示靠起始端对齐</td>
+</tr>
+<tr>
+<td>end</td>
+<td>表示靠结束端对齐</td>
+</tr>
+</tbody>
+</table>
+<h3 id="依赖布局">依赖布局</h3>
+<p>每个组件可以指定相对于其他同级组件的位置，或者指定相对于父组件的位置。
+有一个属性：<code>alignment</code>（对齐方式）</p>
+<table>
+<thead>
+<tr>
+<th>取值</th>
+<th>取值说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>left</td>
+<td>表示左对齐</td>
+</tr>
+<tr>
+<td>top</td>
+<td>表示顶部对齐</td>
+</tr>
+<tr>
+<td>right</td>
+<td>表示右对齐</td>
+</tr>
+<tr>
+<td>bottom</td>
+<td>表示底部对齐</td>
+</tr>
+<tr>
+<td>horizontal_center</td>
+<td>表示水平居中对齐</td>
+</tr>
+<tr>
+<td>vertical_center</td>
+<td>表示垂直居中对齐</td>
+</tr>
+<tr>
+<td>center</td>
+<td>表示居中对齐</td>
+</tr>
+<tr>
+<td>start</td>
+<td>表示靠起始端对齐</td>
+</tr>
+<tr>
+<td>end</td>
+<td>表示靠结束端对齐</td>
+</tr>
+</tbody>
+</table>
+<h3 id="其他布局">其他布局</h3>
+<ul>
+<li><strong>表格布局</strong>
+能将组件按照<u>行列的方式放在表格</u>中，形成整洁有序的布局方式。</li>
+<li><strong>堆叠布局（栈布局）</strong>
+用来实现组件之间的<u>层叠</u>布局，添加到这个布局中的视图默认放到这块区域的左上角。第一个添加到布局中的视图显示在最底层，之后的组件会被添加到上层，依次堆叠。</li>
+<li><strong>位置布局</strong>
+用于为组件设定特殊的位置。指定组件的<code>(x,y)</code>坐标值在屏幕上显示。起始坐标<code>(0,0)</code>默认在左上角。</li>
+<li><strong>自适应（盒子）布局</strong>
+使得页面上的多个组件在不同屏幕尺寸设备上能够自适应调整列数。</li>
+</ul>
+<h3 id="单体组件">单体组件</h3>
+<p>文本组件（<code>Text</code>）</p>
+<p>创建一个Text（xml版本） <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">Text</span></span><br><span class="hljs-tag"><span class="hljs-attr">ohos:id</span>=<span class="hljs-string">&quot;$+id:text&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">ohos:width</span>=<span class="hljs-string">&quot;300vp&quot;</span> (<span class="hljs-attr">设置宽度</span>： <span class="hljs-attr">300vp</span>)</span><br><span class="hljs-tag"><span class="hljs-attr">ohos:height</span>=<span class="hljs-string">&quot;150vp&quot;</span> (<span class="hljs-attr">设置高度</span>)</span><br><span class="hljs-tag"><span class="hljs-attr">ohos:text</span>=<span class="hljs-string">&quot;Text组件&quot;</span> (<span class="hljs-attr">文本显示内容</span>)</span><br><span class="hljs-tag"><span class="hljs-attr">ohos:background_element</span>=<span class="hljs-string">&quot;$graphic:background_text&quot;</span>  (<span class="hljs-attr">设置背景</span>)</span><br><span class="hljs-tag"><span class="hljs-attr">ohos:text_size</span>=<span class="hljs-string">&quot;66fp&quot;</span> (<span class="hljs-attr">设置字体大小</span>)</span><br><span class="hljs-tag"><span class="hljs-attr">ohos:text_color</span>=<span class="hljs-string">&quot;white&quot;</span> (<span class="hljs-attr">设置文字颜色</span>)</span><br><span class="hljs-tag"><span class="hljs-attr">ohos:italic</span>=<span class="hljs-string">&quot;true&quot;</span> (<span class="hljs-attr">设置斜体</span>)</span><br><span class="hljs-tag"><span class="hljs-attr">ohos:text_weight</span>=<span class="hljs-string">&quot;700&quot;</span> (<span class="hljs-attr">设置字重</span>，<span class="hljs-attr">下面的是设置字体</span>)</span><br><span class="hljs-tag"><span class="hljs-attr">ohos:text_font</span>=<span class="hljs-string">&quot;serif&quot;</span> </span><br><span class="hljs-tag">/&gt;</span><br></code></pre></td></tr></table></figure></p>
+<p>最后，在<code>MainAbilitySlice.java</code>中，通过<code>setUIContent()</code>加载该xml布局。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MainAbilitySlice</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">AbilitySlice</span> &#123;<br>	<span class="hljs-meta">@Override</span><br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onStart</span> <span class="hljs-params">(Intent intent)</span>&#123;<br>		Super.onStart(intent);<br><br>		<span class="hljs-comment">// 这一行是加载xml布局</span><br>		Super.setUIContent(ResourceTable.Layout_text);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>运行效果：</p>
+<figure>
+<img src="/assets/img20250703030406.png" srcset="/img/loading.gif" lazyload alt="XML创建Text效果" />
+<figcaption aria-hidden="true">XML创建Text效果</figcaption>
+</figure>
+<p>Java版：打开<code>MainAbilitySlice.java</code>文件，找到<code>onStart()</code>方法，创建Text组件。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">Text</span> <span class="hljs-variable">text</span> <span class="hljs-operator">=</span> (Text) findComponentById(ResourceTable.Id_text); <span class="hljs-comment">// 获取布局中组件</span><br>text.setText(<span class="hljs-string">&quot;text组件&quot;</span>); <span class="hljs-comment">// 设置文本</span><br>text.setTextSize(<span class="hljs-number">66</span>);<span class="hljs-comment">// 设置文字大小</span><br>text.setTextColor(Color.WHITE);<span class="hljs-comment">// 设置文字颜色</span><br>text.setWidth(<span class="hljs-number">300</span>);<br>text.setHeight(<span class="hljs-number">150</span>);<br></code></pre></td></tr></table></figure>
+<p>（和xml差不多） text</p>
+<p>按钮组件（<code>Button</code>）</p>
+<p>Button无自有的XML属性，共有XML属性继承自Text。</p>
+<p>普通按钮和其他按钮的区别在于不需要设置任何形状，只设置文本和背景颜色即可。
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">Text</span></span><br><span class="hljs-tag"><span class="hljs-attr">ohos:id</span>=<span class="hljs-string">&quot;$+id:button&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">ohos:width</span>=<span class="hljs-string">&quot;200vp&quot;</span> (<span class="hljs-attr">设置宽度</span>： <span class="hljs-attr">200vp</span>)</span><br><span class="hljs-tag"><span class="hljs-attr">ohos:height</span>=<span class="hljs-string">&quot;100vp&quot;</span> (<span class="hljs-attr">设置高度</span>)</span><br><span class="hljs-tag"><span class="hljs-attr">ohos:text_size</span>=<span class="hljs-string">&quot;30fp&quot;</span> (<span class="hljs-attr">设置字体大小</span>)</span><br><span class="hljs-tag"><span class="hljs-attr">ohos:text</span>=<span class="hljs-string">&quot;普通按钮&quot;</span> (<span class="hljs-attr">按钮上文字显示的内容</span>)</span><br><span class="hljs-tag"><span class="hljs-attr">ohos:text_color</span>=<span class="hljs-string">&quot;white&quot;</span> (<span class="hljs-attr">设置文字颜色</span>)</span><br><span class="hljs-tag"><span class="hljs-attr">ohos:background_element</span>=<span class="hljs-string">&quot;$graphic:background_button&quot;</span>  (<span class="hljs-attr">设置背景</span>)</span><br><span class="hljs-tag"><span class="hljs-attr">ohos:margin</span>=<span class="hljs-string">&quot;25vp&quot;</span> (<span class="hljs-attr">margin</span> <span class="hljs-attr">为按钮外围和其他组件的间距</span>，<span class="hljs-attr">padding为按钮外围和按钮内部内容的间距</span>)</span><br><span class="hljs-tag"><span class="hljs-attr">ohos:padding</span>=<span class="hljs-string">&quot;10vp&quot;</span></span><br><span class="hljs-tag">/&gt;</span><br></code></pre></td></tr></table></figure> 其他形状的按钮： -
+椭圆按钮：设置<code>background_element</code>实现，设置<code>background_element</code>的<code>shape</code>属性为<code>oval</code>（椭圆）
+-
+胶囊按钮：指定<code>background_element</code>的背景文件为<code>capsule_button.xml</code>实现，在
+<code>capsule_button.xml</code>文件中设置<code>shape</code>为矩形(<code>rectangle</code>)，并且指定<code>corners</code>元素的
+<code>ohos:radius</code>值。 -
+圆形按钮：和椭圆按钮的区别在于组件本身的宽度和高度需要相同。</p>
+<p>Toast对话框</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">ToastDialog</span> <span class="hljs-variable">toastDialog</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ToastDialog</span>(<span class="hljs-built_in">this</span>); <span class="hljs-comment">// 创建toastDialog</span><br>toastDialog.setText(<span class="hljs-string">&quot;网络连接失败。&quot;</span>).show(); <span class="hljs-comment">// 显示toastDialog</span><br></code></pre></td></tr></table></figure>
+<h2 id="ability-不多">Ability (不多)</h2>
+<h3 id="page-ability">Page Ability</h3>
+<ul>
+<li><p>显示
+Ability：需要调用父类Ability的onStart()方法，并使用super.setUIContent()方法加载之前创建的布局文件my_first_layout.xml。
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">import</span> ohos.aafwk.ability.Ability;<br><span class="hljs-keyword">import</span> ohos.aafwk.content.Intent;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">MyFirstAbility</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Ability</span> &#123;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">onStart</span><span class="hljs-params">(Intent intent)</span><br>	&#123;<br>		<span class="hljs-comment">// 调用父类onStart方法</span><br>		<span class="hljs-built_in">super</span>.onStart(intent);<br>		<span class="hljs-built_in">super</span>.setUIContent(ResourceTable.Layout_my_first_layout);<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+修改<code>MyFirstAbility</code>的配置信息的<code>skills</code>部分
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-attr">&quot;skills&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">&#123;</span><br>	<span class="hljs-attr">&quot;entities&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>		<span class="hljs-string">&quot;entity.system.home&quot;</span><br>	<span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>	<span class="hljs-attr">&quot;actions&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>		<span class="hljs-string">&quot;action.system.home&quot;</span><br>	<span class="hljs-punctuation">]</span><br><span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">]</span><br></code></pre></td></tr></table></figure>
+一个应用只能有一个主Ability，HarmonyOS只会显示在<code>config.json</code>文件中遇到的第一个主Ability。</p></li>
+<li><p>销毁：<code>terminateAbility()</code></p></li>
+</ul>
+<h4 id="生命周期">生命周期</h4>
+<p><img src="/assets/img20250703032219.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="/assets/img20250703032442.png" srcset="/img/loading.gif" lazyload /></p>
+<p><img src="/assets/img20250703032643.png" srcset="/img/loading.gif" lazyload /></p>
+<h3 id="service-ability只考一个小点">Service
+Ability（只考一个小点）</h3>
+<p>开启&amp;停止 生命周期</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%9C%9F%E6%9C%AB/" class="category-chain-item">期末</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/" class="print-no-link">#嵌入式</a>
+      
+        <a href="/tags/%E7%89%A9%E8%81%94%E7%BD%91/" class="print-no-link">#物联网</a>
+      
+        <a href="/tags/%E6%9C%9F%E6%9C%AB%E8%80%83/" class="print-no-link">#期末考</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>物联网开发操作系统</div>
+      <div>https://piececao.github.io/2025/07/02/物联网开发操作系统/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Beitragsautor</div>
+          <div>Piececao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Veröffentlicht am</div>
+          <div>2. Juli 2025</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Urheberrechtshinweis</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2025/10/05/Quadratic/" title="二次型">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">二次型</span>
+                        <span class="visible-mobile">Vorheriger</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2025/06/30/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%20%E5%A4%8D%E4%B9%A0%E9%87%8D%E7%82%B9/" title="嵌入式系统复习重点">
+                        <span class="hidden-mobile">嵌入式系统复习重点</span>
+                        <span class="visible-mobile">Nächster</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Inhaltsverzeichnis</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Suchen</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Stichwort</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog funktioniert am besten mit aktiviertem JavaScript</div>
+  </noscript>
+</body>
+</html>
